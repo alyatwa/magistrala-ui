@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   IconCamera,
   IconChartBar,
@@ -17,12 +17,17 @@ import {
   IconSearch,
   IconSettings,
   IconUsers,
-} from "@tabler/icons-react"
+  IconRouter,
+  IconBuildingBroadcastTower,
+  IconBellRinging,
+  IconCirclesFilled,
+  IconMailBolt,
+} from "@tabler/icons-react";
 
-import { NavDocuments } from "@/components/nav-documents"
-import { NavMain } from "@/components/nav-main"
-import { NavSecondary } from "@/components/nav-secondary"
-import { NavUser } from "@/components/nav-user"
+import { NavDocuments } from "@/components/nav-documents";
+import { NavMain } from "@/components/nav-main";
+import { NavSecondary } from "@/components/nav-secondary";
+import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -31,7 +36,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 const data = {
   user: {
@@ -46,9 +51,9 @@ const data = {
       icon: IconDashboard,
     },
     {
-      title: "Lifecycle",
+      title: "Clients",
       url: "#",
-      icon: IconListDetails,
+      icon: IconRouter,
     },
     {
       title: "Analytics",
@@ -56,14 +61,14 @@ const data = {
       icon: IconChartBar,
     },
     {
-      title: "Projects",
+      title: "Channels",
       url: "#",
-      icon: IconFolder,
+      icon: IconBuildingBroadcastTower,
     },
     {
-      title: "Team",
+      title: "Alarms",
       url: "#",
-      icon: IconUsers,
+      icon: IconBellRinging,
     },
   ],
   navClouds: [
@@ -138,17 +143,22 @@ const data = {
       icon: IconDatabase,
     },
     {
-      name: "Reports",
+      name: "Roles",
       url: "#",
-      icon: IconReport,
+      icon: IconCirclesFilled,
     },
     {
-      name: "Word Assistant",
+      name: "Members",
       url: "#",
-      icon: IconFileWord,
+      icon: IconUsers,
+    },
+    {
+      name: "Invitations",
+      url: "#",
+      icon: IconMailBolt,
     },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -177,5 +187,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavUser user={data.user} />
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }
