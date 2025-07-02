@@ -22,6 +22,8 @@ import {
   IconBellRinging,
   IconCirclesFilled,
   IconMailBolt,
+  IconBuildings,
+  IconStack2Filled,
 } from "@tabler/icons-react";
 
 import { NavDocuments } from "@/components/nav-documents";
@@ -141,6 +143,16 @@ const data = {
       name: "Data Library",
       url: "#",
       icon: IconDatabase,
+    },
+    {
+      name: "Domain",
+      url: "#",
+      icon: IconBuildings,
+    },
+    {
+      name: "Groups",
+      url: "/groups",
+      icon: IconStack2Filled,
     },
     {
       name: "Roles",
