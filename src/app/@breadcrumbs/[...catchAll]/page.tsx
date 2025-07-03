@@ -1,10 +1,12 @@
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 type Props = {
-  params: {
+  params: Promise<{
     catchAll: string[];
-  };
+  }>;
 };
-export default function BreadcrumbSlot({ params: { catchAll } }: Props) {
+
+export default async function BreadcrumbSlot({ params }: Props) {
+  const { catchAll } = await params;
   return <Breadcrumbs routes={catchAll} />;
 }
