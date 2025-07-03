@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, use } from "react";
 
 import {
   Breadcrumb,
@@ -8,8 +8,14 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { usePathname } from "next/navigation";
 
-export function Breadcrumbs({ routes = [] }: { routes: string[] }) {
+export function Breadcrumbs() {
+  const pathname = usePathname();
+
+  const routes = pathname
+    .split("/")
+    .filter((route) => route !== "" && route !== "dashboard");
   let fullHref: string | undefined = undefined;
   const breadcrumbItems: ReactElement[] = [];
   let breadcrumbPage: ReactElement = <></>;
