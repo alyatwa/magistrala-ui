@@ -54,7 +54,7 @@ const data = {
     },
     {
       title: "Clients",
-      url: "#",
+      url: "/dashboard/clients",
       icon: IconRouter,
     },
     {
@@ -151,7 +151,7 @@ const data = {
     },
     {
       name: "Groups",
-      url: "/groups",
+      url: "/dashboard/groups",
       icon: IconStack2Filled,
     },
     {
