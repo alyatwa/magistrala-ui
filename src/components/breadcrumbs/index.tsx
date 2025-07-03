@@ -76,7 +76,7 @@ export function Breadcrumbs() {
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         {breadcrumbItems}
-        {breadcrumbItems.length > 0 && <BreadcrumbSeparator />}
+        <BreadcrumbSeparator />
         {breadcrumbPage}
       </BreadcrumbList>
     </Breadcrumb>
