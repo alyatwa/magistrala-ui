@@ -26,8 +26,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  breadcrumbs,
 }: Readonly<{
   children: React.ReactNode;
+  breadcrumbs: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -40,10 +42,10 @@ export default function RootLayout({
         <ThemeProvider>
           <LayoutProvider>
             <ActiveThemeProvider>
+              {breadcrumbs}
               {children}
               {/* <TailwindIndicator />    */}
               <Toaster position="top-center" />
-          
             </ActiveThemeProvider>
           </LayoutProvider>
         </ThemeProvider>
