@@ -10,6 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import CodeMirror from "@uiw/react-codemirror";
 import {
   Form,
   FormControl,
@@ -123,10 +124,12 @@ export default function ClientForm() {
                 <FormItem>
                   <FormLabel>Metadata</FormLabel>
                   <FormControl>
-                    <Textarea
-                      placeholder="1    ()"
-                      className="min-h-[120px] resize-none"
-                      {...field}
+                    <CodeMirror
+                      className="border rounded-md p-2"
+                      value={field.value}
+                      onChange={(value, viewUpdate) => {
+                        field.onChange(value);
+                      }}
                     />
                   </FormControl>
                   <FormMessage />
