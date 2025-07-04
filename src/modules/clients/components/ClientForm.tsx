@@ -22,7 +22,7 @@ import {
 import { json } from "@codemirror/lang-json";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { tokyoNightDay } from "@uiw/codemirror-theme-tokyo-night-day";
+import { tokyoNight } from "@uiw/codemirror-theme-tokyo-night";
 
 const extensions = [json()];
 
@@ -129,7 +129,7 @@ export default function ClientForm() {
                       }}
                       color="black"
                       height="150px"
-                      theme={tokyoNightDay}
+                      theme={tokyoNight}
                       basicSetup={{
                         lineNumbers: true,
                         foldGutter: true,
