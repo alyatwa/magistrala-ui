@@ -19,16 +19,12 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { json } from "@codemirror/lang-json";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { tokyoNightDay } from "@uiw/codemirror-theme-tokyo-night-day";
+
+const extensions = [json()];
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -125,6 +121,7 @@ export default function ClientForm() {
                   <FormLabel>Metadata</FormLabel>
                   <FormControl>
                     <CodeMirror
+                      extensions={extensions}
                       className="border rounded-md p-2"
                       value={field.value}
                       onChange={(value, viewUpdate) => {
@@ -132,7 +129,7 @@ export default function ClientForm() {
                       }}
                       color="black"
                       height="150px"
-                      theme="dark"
+                      theme={tokyoNightDay}
                       basicSetup={{
                         lineNumbers: true,
                         foldGutter: true,
