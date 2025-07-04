@@ -130,6 +130,19 @@ export default function ClientForm() {
                       onChange={(value, viewUpdate) => {
                         field.onChange(value);
                       }}
+                      color="black"
+                      height="150px"
+                      basicSetup={{
+                        lineNumbers: true,
+                        foldGutter: true,
+                        dropCursor: false,
+                        allowMultipleSelections: false,
+                        indentOnInput: true,
+                        bracketMatching: true,
+                        closeBrackets: true,
+                        autocompletion: true,
+                        highlightSelectionMatches: false,
+                      }}
                     />
                   </FormControl>
                   <FormMessage />
