@@ -132,6 +132,7 @@ export default function ClientForm() {
                       }}
                       color="black"
                       height="150px"
+                      theme="dark"
                       basicSetup={{
                         lineNumbers: true,
                         foldGutter: true,
