@@ -61,18 +61,12 @@ function Button({
       <React.Fragment>
         {loading && (
           <LoaderCircleIcon
-            className="size-4 animate-spin"
-            aria-hidden="true"
-          />
-        )}
-        {loading && (
-          <LoaderCircleIcon
             className="-ms-1 animate-spin"
             size={16}
             aria-hidden="true"
           />
         )}
-        {children}{" "}
+        {children}
       </React.Fragment>
     </Comp>
   );
