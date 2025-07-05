@@ -95,8 +95,6 @@ export default function GroupForm({
     onAdd?.();
     // revalidatePath("/dashboard/groups", "page");
     startTransition(() => {
-      // Refresh the current route and fetch new data from the server without
-      // losing client-side browser or React state.
       router.refresh();
     });
     setOpen(false);

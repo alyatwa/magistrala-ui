@@ -3,7 +3,6 @@
 import { Group, Status } from "@absmach/magistrala-sdk";
 import { groups } from "@/lib/magi";
 import { randomUUID } from "node:crypto";
-import { cache } from "react";
 
 // Mock groups data - replace with actual SDK calls when available
 const mockGroups: Group[] = [
