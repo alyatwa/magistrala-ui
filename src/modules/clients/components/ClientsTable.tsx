@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { DataTable, DragHandle } from "@/components/ui/tankstack-table";
 import {
@@ -21,16 +22,22 @@ import {
 } from "@/components/ui/dropdown-menu";
 import ClientForm from "./ClientForm";
 import { getClients } from "../actions";
+import { use } from "react";
+import { Client } from "@absmach/magistrala-sdk";
 
 const schema = z.object({
-  id: z.number(),
+  id: z.string(),
   name: z.string(),
   tags: z.array(z.string()),
   status: z.enum(["enabled", "disabled"]),
 });
 
-export const ClientsTable = async () => {
-  const data = await getClients();
+interface ClientsTableProps {
+  clients: Promise<Client[]>;
+}
+
+export const ClientsTable: React.FC<ClientsTableProps> = ({ clients }) => {
+  const data = use(clients);
   return <DataTable columns={columns} toolbar={<Toolbar />} data={data} />;
 };
 

@@ -298,7 +298,7 @@ export function DataTable({
 }
 
 // Create a separate component for the drag handle
-export function DragHandle({ id }: { id: number }) {
+export function DragHandle({ id }: { id: string }) {
   const { attributes, listeners } = useSortable({
     id,
   });
