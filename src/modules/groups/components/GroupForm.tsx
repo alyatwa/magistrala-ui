@@ -75,7 +75,8 @@ export default function GroupForm({ button }: { button?: React.ReactNode }) {
   const onSubmit = async (data: FormData) => {
     const groupData = {
       ...data,
-      level: data.parent_id ? 1 : 0,
+      parent_id: data.parent_id === "none" ? undefined : data.parent_id,
+      level: data.parent_id && data.parent_id !== "none" ? 1 : 0,
       status: "enabled" as const, // Default status
     };
 
@@ -138,7 +139,7 @@ export default function GroupForm({ button }: { button?: React.ReactNode }) {
                   <FormLabel>Parent Group</FormLabel>
                   <Select
                     onValueChange={field.onChange}
-                    defaultValue={field.value}
+                    defaultValue={field.value || "none"}
                   >
                     <FormControl>
                       <SelectTrigger>
@@ -146,7 +147,9 @@ export default function GroupForm({ button }: { button?: React.ReactNode }) {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="">No parent (root level)</SelectItem>
+                      <SelectItem value="none">
+                        No parent (root level)
+                      </SelectItem>
                       {parentGroups.map((group) => (
                         <SelectItem key={group.id} value={group.id}>
                           {group.name} {group.path && `(${group.path})`}
