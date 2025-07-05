@@ -53,6 +53,7 @@ function withAuth<T extends Record<string, any>>(
 
 // 3) Wrap once, now all calls auto‐inject auth and only need the “real” params
 export const clients = withAuth(mgSdk.Clients, domainId, token);
+export const groups = withAuth(mgSdk.Groups, domainId, token);
 
 // clients
 //   .CreateClient({ name: "acme" })

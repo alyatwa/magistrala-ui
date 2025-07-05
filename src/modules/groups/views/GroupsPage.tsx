@@ -1,11 +1,11 @@
-import GroupForm from "../components/GroupForm";
+import { getGroupsFlattened } from "../actions";
+import { GroupsTable } from "../components/GroupsTable";
 
 export default function GroupsPage() {
+  const groups = getGroupsFlattened();
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-8">
-      <h1 className="text-2xl font-bold mb-4">Groups Page</h1>
-      <p className="text-lg">This is the Groups page content.</p>
-      <GroupForm />
-    </div>
+    <>
+      <GroupsTable groups={groups} />
+    </>
   );
 }

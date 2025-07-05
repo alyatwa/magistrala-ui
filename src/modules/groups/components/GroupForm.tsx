@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -10,6 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import CodeMirror from "@uiw/react-codemirror";
 import {
   Form,
   FormControl,
@@ -25,43 +26,73 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { json } from "@codemirror/lang-json";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { tokyoNight } from "@uiw/codemirror-theme-tokyo-night";
+import { createGroup, getParentGroups } from "../actions";
+import { IconPlus } from "@tabler/icons-react";
+
+const extensions = [json()];
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required"),
   description: z.string().optional(),
-  parent: z.string().optional(),
-  metadata: z.string().optional(),
+  parent_id: z.string().optional(),
+  metadata: z.record(z.string(), z.any()).optional(),
 });
 
 type FormData = z.infer<typeof formSchema>;
 
-export default function GroupForm() {
+export default function GroupForm({ button }: { button?: React.ReactNode }) {
   const [open, setOpen] = useState(false);
+  const [parentGroups, setParentGroups] = useState<
+    Array<{ id: string; name: string; path?: string }>
+  >([]);
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       description: "",
-      parent: "",
-      metadata: "",
+      parent_id: "",
+      metadata: {},
     },
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log("Form submitted:", data);
-    // Handle form submission here
+  const {
+    reset,
+    formState: { isSubmitting },
+  } = form;
+
+  useEffect(() => {
+    if (open) {
+      // Load parent groups when dialog opens
+      getParentGroups().then(setParentGroups);
+    }
+  }, [open]);
+
+  const onSubmit = async (data: FormData) => {
+    const groupData = {
+      ...data,
+      level: data.parent_id ? 1 : 0,
+      status: "enabled" as const, // Default status
+    };
+
+    await createGroup(groupData);
     setOpen(false);
-    form.reset();
+    reset();
   };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button>Create Group</Button>
+        {button || (
+          <Button variant="outline" size="sm">
+            <IconPlus />
+            <span className="hidden lg:inline">Add Group</span>
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
@@ -78,7 +109,7 @@ export default function GroupForm() {
                     Name <span className="text-red-500">*</span>
                   </FormLabel>
                   <FormControl>
-                    <Input placeholder="Nairobi" {...field} />
+                    <Input placeholder="North America" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -92,7 +123,7 @@ export default function GroupForm() {
                 <FormItem>
                   <FormLabel>Description</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter description" {...field} />
+                    <Input placeholder="Enter group description" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -101,23 +132,26 @@ export default function GroupForm() {
 
             <FormField
               control={form.control}
-              name="parent"
+              name="parent_id"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Parent</FormLabel>
+                  <FormLabel>Parent Group</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a group" />
+                        <SelectValue placeholder="Select a parent group (optional)" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="group1">Group 1</SelectItem>
-                      <SelectItem value="group2">Group 2</SelectItem>
-                      <SelectItem value="group3">Group 3</SelectItem>
+                      <SelectItem value="">No parent (root level)</SelectItem>
+                      {parentGroups.map((group) => (
+                        <SelectItem key={group.id} value={group.id}>
+                          {group.name} {group.path && `(${group.path})`}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -132,10 +166,34 @@ export default function GroupForm() {
                 <FormItem>
                   <FormLabel>Metadata</FormLabel>
                   <FormControl>
-                    <Textarea
-                      placeholder="1    ()"
-                      className="min-h-[120px] resize-none"
-                      {...field}
+                    <CodeMirror
+                      extensions={extensions}
+                      className="border rounded-md p-2"
+                      value={
+                        (field.value && JSON.stringify(field.value, null, 2)) ||
+                        "{}"
+                      }
+                      onChange={(value, viewUpdate) => {
+                        try {
+                          field.onChange(JSON.parse(value));
+                        } catch (e) {
+                          // Invalid JSON, don't update
+                        }
+                      }}
+                      color="black"
+                      height="150px"
+                      theme={tokyoNight}
+                      basicSetup={{
+                        lineNumbers: true,
+                        foldGutter: true,
+                        dropCursor: false,
+                        allowMultipleSelections: false,
+                        indentOnInput: true,
+                        bracketMatching: true,
+                        closeBrackets: true,
+                        autocompletion: true,
+                        highlightSelectionMatches: false,
+                      }}
                     />
                   </FormControl>
                   <FormMessage />
@@ -151,7 +209,9 @@ export default function GroupForm() {
               >
                 Close
               </Button>
-              <Button type="submit">Create</Button>
+              <Button loading={isSubmitting} type="submit">
+                Create
+              </Button>
             </div>
           </form>
         </Form>
