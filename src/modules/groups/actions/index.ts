@@ -3,6 +3,7 @@
 import { Group, Status } from "@absmach/magistrala-sdk";
 import { groups } from "@/lib/magi";
 import { randomUUID } from "node:crypto";
+import { cache } from "react";
 
 // Mock groups data - replace with actual SDK calls when available
 const mockGroups: Group[] = [
@@ -168,7 +169,7 @@ export async function getGroups(): Promise<Group[]> {
 }
 
 // Get groups flattened (for table display)
-export async function getGroupsFlattened(): Promise<Group[]> {
+export const getGroupsFlattened = cache(async (): Promise<Group[]> => {
   const groups = await getGroups();
   const flattened: Group[] = [];
 
@@ -183,7 +184,7 @@ export async function getGroupsFlattened(): Promise<Group[]> {
 
   flattenGroups(groups);
   return flattened;
-}
+});
 
 // Get parent groups for dropdown
 export async function getParentGroups(): Promise<
