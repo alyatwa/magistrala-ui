@@ -50,12 +50,17 @@ export default function ClientForm() {
     },
   });
 
+  const {
+    reset,
+    formState: { isSubmitting },
+  } = form;
+
   const onSubmit = async (data: FormData) => {
     console.log("Form submitted:", data);
     await updateClient(data);
     // Handle form submission here
     setOpen(false);
-    form.reset();
+    reset();
   };
 
   return (
@@ -166,7 +171,9 @@ export default function ClientForm() {
               >
                 Close
               </Button>
-              <Button type="submit">Create</Button>
+              <Button loading={isSubmitting} type="submit">
+                Create
+              </Button>
             </div>
           </form>
         </Form>
