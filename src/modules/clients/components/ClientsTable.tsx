@@ -135,10 +135,12 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     accessorKey: "credentials.secret",
     header: "Secret",
     cell: ({ row }) => (
-      <span className="text-muted-foreground w-[90px] truncate flex gap-1">
-        {row.original.credentials.secret}
+      <div className="flex gap-1">
+        <span className="text-muted-foreground w-[90px] truncate block">
+          {row.original.credentials.secret}
+        </span>
         <CopyButton text={row.original.credentials.secret} />
-      </span>
+      </div>
     ),
   },
 
