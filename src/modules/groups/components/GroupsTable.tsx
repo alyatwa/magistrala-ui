@@ -176,6 +176,9 @@ const Toolbar: React.FC = () => {
   return (
     <div className="flex items-center gap-2">
       <GroupForm
+        onAdd={() => {
+          // refetch groups or perform any other action after adding a group
+        }}
         button={
           <Button variant="outline" size="sm">
             <IconPlus />

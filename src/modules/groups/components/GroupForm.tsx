@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -32,6 +32,8 @@ import { Button } from "@/components/ui/button";
 import { tokyoNight } from "@uiw/codemirror-theme-tokyo-night";
 import { createGroup, getParentGroups } from "../actions";
 import { IconPlus } from "@tabler/icons-react";
+import { revalidatePath } from "next/cache";
+import { useRouter } from "next/navigation";
 
 const extensions = [json()];
 
@@ -44,8 +46,17 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-export default function GroupForm({ button }: { button?: React.ReactNode }) {
+export default function GroupForm({
+  button,
+  onAdd,
+}: {
+  button?: React.ReactNode;
+  onAdd?: () => void;
+}) {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+
   const [parentGroups, setParentGroups] = useState<
     Array<{ id: string; name: string; path?: string }>
   >([]);
@@ -81,6 +92,13 @@ export default function GroupForm({ button }: { button?: React.ReactNode }) {
     };
 
     await createGroup(groupData);
+    onAdd?.();
+    // revalidatePath("/dashboard/groups", "page");
+    startTransition(() => {
+      // Refresh the current route and fetch new data from the server without
+      // losing client-side browser or React state.
+      router.refresh();
+    });
     setOpen(false);
     reset();
   };
@@ -212,7 +230,7 @@ export default function GroupForm({ button }: { button?: React.ReactNode }) {
               >
                 Close
               </Button>
-              <Button loading={isSubmitting} type="submit">
+              <Button loading={isSubmitting || isPending} type="submit">
                 Create
               </Button>
             </div>
