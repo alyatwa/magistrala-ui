@@ -56,7 +56,7 @@ export default function ClientForm() {
   } = form;
 
   const onSubmit = async (data: FormData) => {
-    console.log("Form submitted:", data);
+    // console.log("Form submitted:", data);
     await updateClient(data);
     // Handle form submission here
     setOpen(false);
@@ -118,7 +118,6 @@ export default function ClientForm() {
                       onTagsChange={field.onChange}
                       initialTags={field.value}
                     />
-                    {/* <Input placeholder="Enter tags" {...field} /> */}
                   </FormControl>
                   <FormMessage />
                 </FormItem>

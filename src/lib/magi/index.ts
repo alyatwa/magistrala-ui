@@ -22,31 +22,50 @@ function withAuth<T extends Record<string, any>>(
   domainId: string,
   token: string
 ): WithAuth<T> {
-  const bound = {} as WithAuth<T>;
+  const bound = {} as any;
+
+  // Copy enumerable properties
   for (const key in api) {
     const fn = api[key];
     if (typeof fn === "function") {
       bound[key] = ((...args: any[]) => fn(...args, domainId, token)) as any;
     }
   }
-  return bound;
+
+  // Copy prototype methods (non-enumerable)
+  const proto = Object.getPrototypeOf(api);
+  if (proto && proto !== Object.prototype) {
+    const propertyNames = Object.getOwnPropertyNames(proto);
+    for (const key of propertyNames) {
+      if (
+        key !== "constructor" &&
+        typeof api[key] === "function" &&
+        !bound[key]
+      ) {
+        bound[key] = ((...args: any[]) =>
+          api[key](...args, domainId, token)) as any;
+      }
+    }
+  }
+
+  return bound as WithAuth<T>;
 }
 
 // 3) Wrap once, now all calls auto‐inject auth and only need the “real” params
 export const clients = withAuth(mgSdk.Clients, domainId, token);
 
-clients
-  .CreateClient({ name: "acme" })
-  .then((r) => console.log(r))
-  .catch(console.error);
+// clients
+//   .CreateClient({ name: "acme" })
+//   .then((r) => console.log(r))
+//   .catch(console.error);
 
-mgSdk.Clients.CreateClient({ name: "<clientName>" }, domainId, token)
-  .then((response: any) => {
-    console.log("response:", response);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+// mgSdk.Clients.CreateClient({ name: "<clientName>" }, domainId, token)
+//   .then((response: any) => {
+//     console.log("response:", response);
+//   })
+//   .catch((error) => {
+//     console.error(error);
+//   });
 
 // mgSdk.Clients.Disable("<clientId>", domainId, token)
 //   .then((response: any) => {
