@@ -24,6 +24,7 @@ import ClientForm from "./ClientForm";
 import { getClients } from "../actions";
 import { use } from "react";
 import { Client } from "@absmach/magistrala-sdk";
+import { CopyButton } from "@/components/copy-button";
 
 const schema = z.object({
   id: z.string(),
@@ -134,8 +135,9 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     accessorKey: "credentials.secret",
     header: "Secret",
     cell: ({ row }) => (
-      <span className="text-muted-foreground w-[90px] truncate">
+      <span className="text-muted-foreground w-[90px] truncate flex gap-1">
         {row.original.credentials.secret}
+        <CopyButton text={row.original.credentials.secret} />
       </span>
     ),
   },
