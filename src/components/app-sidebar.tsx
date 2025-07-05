@@ -58,6 +58,11 @@ const data = {
       icon: IconRouter,
     },
     {
+      title: "Users",
+      url: "/dashboard/users",
+      icon: IconUsers,
+    },
+    {
       title: "Analytics",
       url: "#",
       icon: IconChartBar,
@@ -160,13 +165,13 @@ const data = {
       icon: IconCirclesFilled,
     },
     {
-      name: "Members",
-      url: "#",
+      name: "Users",
+      url: "/dashboard/users",
       icon: IconUsers,
     },
     {
       name: "Invitations",
-      url: "#",
+      url: "/dashboard/invitations",
       icon: IconMailBolt,
     },
   ],

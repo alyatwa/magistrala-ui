@@ -17,6 +17,21 @@ type WithAuth<T> = {
     ? (...args: P) => R
     : T[K];
 };
+
+type WithTokenOnly<T> = {
+  [K in keyof T]: T[K] extends (...args: [...infer P, any]) => infer R
+    ? (...args: P) => R
+    : T[K];
+};
+
+type WithInvitationAuth<T> = {
+  [K in keyof T]: K extends "SendInvitation"
+    ? (userId: string, roleId: string, resend?: boolean) => Promise<Response>
+    : T[K] extends (...args: [...infer P, any, any]) => infer R
+    ? (...args: P) => R
+    : T[K];
+};
+
 function withAuth<T extends Record<string, any>>(
   api: T,
   domainId: string,
@@ -51,10 +66,88 @@ function withAuth<T extends Record<string, any>>(
   return bound as WithAuth<T>;
 }
 
+function withTokenOnly<T extends Record<string, any>>(
+  api: T,
+  token: string
+): WithTokenOnly<T> {
+  const bound = {} as any;
+
+  // Copy enumerable properties
+  for (const key in api) {
+    const fn = api[key];
+    if (typeof fn === "function") {
+      bound[key] = ((...args: any[]) => fn(...args, token)) as any;
+    }
+  }
+
+  // Copy prototype methods (non-enumerable)
+  const proto = Object.getPrototypeOf(api);
+  if (proto && proto !== Object.prototype) {
+    const propertyNames = Object.getOwnPropertyNames(proto);
+    for (const key of propertyNames) {
+      if (
+        key !== "constructor" &&
+        typeof api[key] === "function" &&
+        !bound[key]
+      ) {
+        bound[key] = ((...args: any[]) => api[key](...args, token)) as any;
+      }
+    }
+  }
+
+  return bound as WithTokenOnly<T>;
+}
+
+function withInvitationAuth<T extends Record<string, any>>(
+  api: T,
+  domainId: string,
+  token: string
+): WithInvitationAuth<T> {
+  const bound = {} as any;
+
+  // Copy enumerable properties
+  for (const key in api) {
+    const fn = api[key];
+    if (typeof fn === "function") {
+      if (key === "SendInvitation") {
+        bound[key] = ((userId: string, roleId: string, resend?: boolean) =>
+          fn(userId, domainId, roleId, token, resend)) as any;
+      } else {
+        bound[key] = ((...args: any[]) => fn(...args, domainId, token)) as any;
+      }
+    }
+  }
+
+  // Copy prototype methods (non-enumerable)
+  const proto = Object.getPrototypeOf(api);
+  if (proto && proto !== Object.prototype) {
+    const propertyNames = Object.getOwnPropertyNames(proto);
+    for (const key of propertyNames) {
+      if (
+        key !== "constructor" &&
+        typeof api[key] === "function" &&
+        !bound[key]
+      ) {
+        if (key === "SendInvitation") {
+          bound[key] = ((userId: string, roleId: string, resend?: boolean) =>
+            api[key](userId, domainId, roleId, token, resend)) as any;
+        } else {
+          bound[key] = ((...args: any[]) =>
+            api[key](...args, domainId, token)) as any;
+        }
+      }
+    }
+  }
+
+  return bound as WithInvitationAuth<T>;
+}
+
 // 3) Wrap once, now all calls auto‐inject auth and only need the "real" params
 export const clients = withAuth(mgSdk.Clients, domainId, token);
 export const channels = withAuth(mgSdk.Channels, domainId, token);
 export const groups = withAuth(mgSdk.Groups, domainId, token);
+export const users = withTokenOnly(mgSdk.Users, token);
+export const invitations = withInvitationAuth(mgSdk.Domains, domainId, token);
 
 // clients
 //   .CreateClient({ name: "acme" })
