@@ -25,6 +25,7 @@ import { Button } from "@/components/ui/button";
 import { tokyoNight } from "@uiw/codemirror-theme-tokyo-night";
 import { updateClient } from "../actions";
 import { TagsInput } from "@/components/tags-input";
+import { IconPlus } from "@tabler/icons-react";
 
 const extensions = [json()];
 
@@ -37,7 +38,7 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-export default function ClientForm() {
+export default function ClientForm({ button }: { button?: React.ReactNode }) {
   const [open, setOpen] = useState(false);
 
   const form = useForm<FormData>({
@@ -66,7 +67,12 @@ export default function ClientForm() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button>Create Client</Button>
+        {button || (
+          <Button variant="outline" size="sm">
+            <IconPlus />
+            <span className="hidden lg:inline">Add Client</span>
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
