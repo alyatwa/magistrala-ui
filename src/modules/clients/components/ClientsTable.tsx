@@ -108,9 +108,9 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         {row.original.status === "enabled" ? (
           <IconCircleCheckFilled className="fill-green-500 dark:fill-green-400" />
         ) : row.original.status === "disabled" ? (
-          <IconPlayerPauseFilled className="animate-spin text-yellow-500 dark:text-yellow-400" />
+          <IconPlayerPauseFilled className="text-yellow-500 dark:text-yellow-400" />
         ) : (
-          <IconLoader />
+          <IconLoader className="animate-spin " />
         )}
         {row.original.status}
       </Badge>
