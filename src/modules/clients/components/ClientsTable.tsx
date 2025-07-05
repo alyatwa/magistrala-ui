@@ -119,16 +119,27 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
       </Badge>
     ),
   },
-  //secret
+  //identity
   {
     accessorKey: "credentials.identity",
     header: "Identity",
     cell: ({ row }) => (
-      <span className="text-muted-foreground w-[120px] truncate">
+      <span className="text-muted-foreground ">
         {row.original.credentials.identity}
       </span>
     ),
   },
+  // secret
+  {
+    accessorKey: "credentials.secret",
+    header: "Secret",
+    cell: ({ row }) => (  
+      <span className="text-muted-foreground w-[120px] truncate">
+        {row.original.credentials.secret}
+      </span>
+    ),
+  },
+
 
   // {
   //   accessorKey: "reviewer",
