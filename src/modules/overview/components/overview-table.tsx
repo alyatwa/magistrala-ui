@@ -1,5 +1,5 @@
+"use client";
 import { DataTable, DragHandle } from "@/components/ui/tankstack-table";
-("use client");
 
 import * as React from "react";
 import {
