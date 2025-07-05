@@ -86,7 +86,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     accessorKey: "tags",
     header: "Tags",
     cell: ({ row }) => (
-      <div className="w-32">
+      <div className="w-32 flex gap-1">
         {row.original.tags.map((tag) => (
           <Badge
             key={tag}
