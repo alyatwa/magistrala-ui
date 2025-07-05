@@ -13,13 +13,7 @@ import { z } from "zod";
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,6 +22,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import ClientForm from "./ClientForm";
+import { getClients } from "../actions";
 
 const schema = z.object({
   id: z.number(),
@@ -36,22 +31,8 @@ const schema = z.object({
   status: z.enum(["enabled", "disabled"]),
 });
 
-const data = [
-  {
-    id: 1,
-    name: "Client A",
-    tags: ["tag1", "tag2"],
-    status: "enabled",
-  },
-  {
-    id: 2,
-    name: "Client B",
-    tags: ["tag3"],
-    status: "disabled",
-  },
-];
-
-export const ClientsTable = () => {
+export const ClientsTable = async () => {
+  const data = await getClients();
   return <DataTable columns={columns} toolbar={<Toolbar />} data={data} />;
 };
 
