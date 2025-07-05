@@ -54,7 +54,7 @@ import { Separator } from "@/components/ui/separator";
 import data from "./data.json";
 
 const schema = z.object({
-  id: z.number(),
+  id: z.string(),
   header: z.string(),
   type: z.string(),
   status: z.string(),
