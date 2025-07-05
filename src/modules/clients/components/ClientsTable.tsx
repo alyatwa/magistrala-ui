@@ -79,7 +79,6 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     cell: ({ row }) => (
       <div className="flex items-center gap-2">
         <span className="font-medium">{row.original.name}</span>
-        <DragHandle id={row.original.id} />
       </div>
     ),
   },
