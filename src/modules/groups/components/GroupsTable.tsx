@@ -77,27 +77,7 @@ const columns: ColumnDef<Group>[] = [
       </span>
     ),
   },
-  {
-    id: "level",
-    header: ({ column }) => (
-      <div className="flex items-center gap-2">
-        Level
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          {column.getIsSorted() === "asc" ? (
-            <IconChevronDown />
-          ) : (
-            <IconChevronRight />
-          )}
-        </Button>
-      </div>
-    ),
-    accessorFn: (row) => row.level || 0,
-    cell: ({ row }) => row.original.level || 0,
-  },
+
   {
     accessorKey: "name",
     header: "Name",
