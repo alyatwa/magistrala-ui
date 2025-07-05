@@ -162,10 +162,8 @@ export function DataTable({
   }
 
   return (
-    <div className="relative flex flex-col gap-4 overflow-auto  ">
-      <div className="flex items-center justify-between px-4 lg:px-6">
-        {toolbar}
-      </div>
+    <div className="relative flex flex-col gap-4 overflow-auto  px-4 lg:px-6">
+      <div className="flex items-center justify-between ">{toolbar}</div>
 
       <div className="overflow-hidden rounded-lg border">
         <DndContext
