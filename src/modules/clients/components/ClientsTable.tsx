@@ -135,7 +135,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     accessorKey: "credentials.secret",
     header: "Secret",
     cell: ({ row }) => (
-      <div className="flex gap-1">
+      <div className="flex gap-1 items-center">
         <span className="text-muted-foreground w-[90px] truncate block">
           {row.original.credentials.secret}
         </span>
