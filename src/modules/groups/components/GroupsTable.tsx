@@ -69,6 +69,36 @@ const columns: ColumnDef<Group>[] = [
     enableHiding: false,
   },
   {
+    accessorKey: "id",
+    header: "ID",
+    cell: ({ row }) => (
+      <span className="text-muted-foreground text-sm font-mono max-w-[150px] truncate block">
+        {row.original.id}
+      </span>
+    ),
+  },
+  {
+    id: "level",
+    header: ({ column }) => (
+      <div className="flex items-center gap-2">
+        Level
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          {column.getIsSorted() === "asc" ? (
+            <IconChevronDown />
+          ) : (
+            <IconChevronRight />
+          )}
+        </Button>
+      </div>
+    ),
+    accessorFn: (row) => row.level || 0,
+    cell: ({ row }) => row.original.level || 0,
+  },
+  {
     accessorKey: "name",
     header: "Name",
     cell: ({ row }) => {
