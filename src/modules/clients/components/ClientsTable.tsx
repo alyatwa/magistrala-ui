@@ -133,13 +133,12 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   {
     accessorKey: "credentials.secret",
     header: "Secret",
-    cell: ({ row }) => (  
-      <span className="text-muted-foreground w-[120px] truncate">
+    cell: ({ row }) => (
+      <span className="text-muted-foreground w-[90px] truncate">
         {row.original.credentials.secret}
       </span>
     ),
   },
-
 
   // {
   //   accessorKey: "reviewer",
