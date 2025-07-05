@@ -6,16 +6,13 @@ import {
   IconCircleCheckFilled,
   IconDotsVertical,
   IconLoader,
+  IconPlayerPauseFilled,
   IconPlus,
 } from "@tabler/icons-react";
 import { z } from "zod";
-import data from "./data.json";
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { toast } from "sonner";
 import {
   Select,
   SelectContent,
@@ -34,13 +31,25 @@ import ClientForm from "./ClientForm";
 
 const schema = z.object({
   id: z.number(),
-  header: z.string(),
-  type: z.string(),
-  status: z.string(),
-  target: z.string(),
-  limit: z.string(),
-  reviewer: z.string(),
+  name: z.string(),
+  tags: z.array(z.string()),
+  status: z.enum(["enabled", "disabled"]),
 });
+
+const data = [
+  {
+    id: 1,
+    name: "Client A",
+    tags: ["tag1", "tag2"],
+    status: "enabled",
+  },
+  {
+    id: 2,
+    name: "Client B",
+    tags: ["tag3"],
+    status: "disabled",
+  },
+];
 
 export const ClientsTable = () => {
   return <DataTable columns={columns} toolbar={<Toolbar />} data={data} />;
@@ -78,15 +87,30 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     enableSorting: false,
     enableHiding: false,
   },
-
   {
-    accessorKey: "type",
-    header: "Section Type",
+    accessorKey: "name",
+    header: "Name",
+    cell: ({ row }) => (
+      <div className="flex items-center gap-2">
+        <span className="font-medium">{row.original.name}</span>
+        <DragHandle id={row.original.id} />
+      </div>
+    ),
+  },
+  {
+    accessorKey: "tags",
+    header: "Tags",
     cell: ({ row }) => (
       <div className="w-32">
-        <Badge variant="outline" className="text-muted-foreground px-1.5">
-          {row.original.type}
-        </Badge>
+        {row.original.tags.map((tag) => (
+          <Badge
+            key={tag}
+            variant="outline"
+            className="text-muted-foreground px-1.5 mb-1"
+          >
+            {tag}
+          </Badge>
+        ))}
       </div>
     ),
   },
@@ -95,8 +119,10 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     header: "Status",
     cell: ({ row }) => (
       <Badge variant="outline" className="text-muted-foreground px-1.5">
-        {row.original.status === "Done" ? (
+        {row.original.status === "enabled" ? (
           <IconCircleCheckFilled className="fill-green-500 dark:fill-green-400" />
+        ) : row.original.status === "disabled" ? (
+          <IconPlayerPauseFilled className="animate-spin text-yellow-500 dark:text-yellow-400" />
         ) : (
           <IconLoader />
         )}
@@ -104,90 +130,41 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
       </Badge>
     ),
   },
-  {
-    accessorKey: "target",
-    header: () => <div className="w-full text-right">Target</div>,
-    cell: ({ row }) => (
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
-            loading: `Saving ${row.original.header}`,
-            success: "Done",
-            error: "Error",
-          });
-        }}
-      >
-        <Label htmlFor={`${row.original.id}-target`} className="sr-only">
-          Target
-        </Label>
-        <Input
-          className="hover:bg-input/30 focus-visible:bg-background dark:hover:bg-input/30 dark:focus-visible:bg-input/30 h-8 w-16 border-transparent bg-transparent text-right shadow-none focus-visible:border dark:bg-transparent"
-          defaultValue={row.original.target}
-          id={`${row.original.id}-target`}
-        />
-      </form>
-    ),
-  },
-  {
-    accessorKey: "limit",
-    header: () => <div className="w-full text-right">Limit</div>,
-    cell: ({ row }) => (
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
-            loading: `Saving ${row.original.header}`,
-            success: "Done",
-            error: "Error",
-          });
-        }}
-      >
-        <Label htmlFor={`${row.original.id}-limit`} className="sr-only">
-          Limit
-        </Label>
-        <Input
-          className="hover:bg-input/30 focus-visible:bg-background dark:hover:bg-input/30 dark:focus-visible:bg-input/30 h-8 w-16 border-transparent bg-transparent text-right shadow-none focus-visible:border dark:bg-transparent"
-          defaultValue={row.original.limit}
-          id={`${row.original.id}-limit`}
-        />
-      </form>
-    ),
-  },
-  {
-    accessorKey: "reviewer",
-    header: "Reviewer",
-    cell: ({ row }) => {
-      const isAssigned = row.original.reviewer !== "Assign reviewer";
 
-      if (isAssigned) {
-        return row.original.reviewer;
-      }
+  // {
+  //   accessorKey: "reviewer",
+  //   header: "Reviewer",
+  //   cell: ({ row }) => {
+  //     const isAssigned = row.original.reviewer !== "Assign reviewer";
 
-      return (
-        <>
-          <Label htmlFor={`${row.original.id}-reviewer`} className="sr-only">
-            Reviewer
-          </Label>
-          <Select>
-            <SelectTrigger
-              className="w-38 **:data-[slot=select-value]:block **:data-[slot=select-value]:truncate"
-              size="sm"
-              id={`${row.original.id}-reviewer`}
-            >
-              <SelectValue placeholder="Assign reviewer" />
-            </SelectTrigger>
-            <SelectContent align="end">
-              <SelectItem value="Eddie Lake">Eddie Lake</SelectItem>
-              <SelectItem value="Jamik Tashpulatov">
-                Jamik Tashpulatov
-              </SelectItem>
-            </SelectContent>
-          </Select>
-        </>
-      );
-    },
-  },
+  //     if (isAssigned) {
+  //       return row.original.reviewer;
+  //     }
+
+  //     return (
+  //       <>
+  //         <Label htmlFor={`${row.original.id}-reviewer`} className="sr-only">
+  //           Reviewer
+  //         </Label>
+  //         <Select>
+  //           <SelectTrigger
+  //             className="w-38 **:data-[slot=select-value]:block **:data-[slot=select-value]:truncate"
+  //             size="sm"
+  //             id={`${row.original.id}-reviewer`}
+  //           >
+  //             <SelectValue placeholder="Assign reviewer" />
+  //           </SelectTrigger>
+  //           <SelectContent align="end">
+  //             <SelectItem value="Eddie Lake">Eddie Lake</SelectItem>
+  //             <SelectItem value="Jamik Tashpulatov">
+  //               Jamik Tashpulatov
+  //             </SelectItem>
+  //           </SelectContent>
+  //         </Select>
+  //       </>
+  //     );
+  //   },
+  // },
   {
     id: "actions",
     cell: () => (
