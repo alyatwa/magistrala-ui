@@ -21,7 +21,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import ClientForm from "./ClientForm";
-import { getClients } from "../actions";
 import { use } from "react";
 import { Client } from "@absmach/magistrala-sdk";
 import { CopyButton } from "@/components/copy-button";
