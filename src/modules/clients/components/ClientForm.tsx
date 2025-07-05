@@ -130,7 +130,10 @@ export default function ClientForm() {
                     <CodeMirror
                       extensions={extensions}
                       className="border rounded-md p-2"
-                      value={field.value as any}
+                      value={
+                        (field.value && JSON.stringify(field.value, null, 2)) ||
+                        "{}"
+                      }
                       onChange={(value, viewUpdate) => {
                         field.onChange(JSON.parse(value));
                       }}
