@@ -30,6 +30,10 @@ const schema = z.object({
   name: z.string(),
   tags: z.array(z.string()),
   status: z.enum(["enabled", "disabled"]),
+  credentials: z.object({
+    identity: z.string(),
+    secret: z.string(),
+  }),
 });
 
 interface ClientsTableProps {
@@ -113,6 +117,16 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         )}
         {row.original.status}
       </Badge>
+    ),
+  },
+  //secret
+  {
+    accessorKey: "credentials.identity",
+    header: "Identity",
+    cell: ({ row }) => (
+      <span className="text-muted-foreground w-[120px] truncate">
+        {row.original.credentials.identity}
+      </span>
     ),
   },
 
