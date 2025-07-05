@@ -23,14 +23,16 @@ import { json } from "@codemirror/lang-json";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { tokyoNight } from "@uiw/codemirror-theme-tokyo-night";
+import { updateClient } from "../actions";
+import { TagsInput } from "@/components/tags-input";
 
 const extensions = [json()];
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required"),
   key: z.string().optional(),
-  tags: z.string().optional(),
-  metadata: z.string().optional(),
+  tags: z.array(z.string()).optional(),
+  metadata: z.record(z.string(), z.string()).optional(),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -43,13 +45,14 @@ export default function ClientForm() {
     defaultValues: {
       name: "",
       key: "",
-      tags: "",
-      metadata: "",
+      tags: [],
+      metadata: {},
     },
   });
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = async (data: FormData) => {
     console.log("Form submitted:", data);
+    await updateClient(data);
     // Handle form submission here
     setOpen(false);
     form.reset();
@@ -106,7 +109,11 @@ export default function ClientForm() {
                 <FormItem>
                   <FormLabel>Tags</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter tags" {...field} />
+                    <TagsInput
+                      onTagsChange={field.onChange}
+                      initialTags={field.value}
+                    />
+                    {/* <Input placeholder="Enter tags" {...field} /> */}
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -123,9 +130,9 @@ export default function ClientForm() {
                     <CodeMirror
                       extensions={extensions}
                       className="border rounded-md p-2"
-                      value={field.value}
+                      value={field.value as any}
                       onChange={(value, viewUpdate) => {
-                        field.onChange(value);
+                        field.onChange(JSON.parse(value));
                       }}
                       color="black"
                       height="150px"
