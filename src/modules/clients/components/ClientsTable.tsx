@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { DataTable, DragHandle } from "@/components/ui/tankstack-table";
 import {
