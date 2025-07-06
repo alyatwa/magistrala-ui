@@ -222,7 +222,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
 
       const handleDelete = async () => {
         try {
-          await deleteInvitation(invitation.invitee_user_id.toString());
+          await deleteInvitation(invitation?.invitee_user_id?.toString()??"-");
         } catch (error) {
           console.error("Failed to delete invitation:", error);
         }
