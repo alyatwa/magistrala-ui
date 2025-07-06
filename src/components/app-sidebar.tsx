@@ -51,25 +51,36 @@ const data = {
       icon: IconDashboard,
     },
     {
-      title: "Clients",
-      url: "/dashboard/clients",
-      icon: IconRouter,
+      title: "Domain",
+      url: "/dashboard/domain",
+      icon: IconBuildings,
     },
     {
       title: "Users",
       url: "/dashboard/users",
       icon: IconUsers,
     },
+    {
+      title: "Roles",
+      url: "/dashboard/roles",
+      icon: IconCirclesFilled,
+    },
+    {
+      title: "Users",
+      url: "/dashboard/users",
+      icon: IconUsers,
+    },
+    {
+      title: "Invitations",
+      url: "/dashboard/invitations",
+      icon: IconMailBolt,
+    },
     // {
     //   title: "Analytics",
     //   url: "#",
     //   icon: IconChartBar,
     // },
-    {
-      title: "Channels",
-      url: "/dashboard/channels",
-      icon: IconBuildingBroadcastTower,
-    },
+
     // {
     //   title: "Alarms",
     //   url: "#",
@@ -125,52 +136,43 @@ const data = {
     },
   ],
   navSecondary: [
-    {
-      title: "Settings",
-      url: "#",
-      icon: IconSettings,
-    },
+    // {
+    //   title: "Settings",
+    //   url: "#",
+    //   icon: IconSettings,
+    // },
     {
       title: "Get Help",
       url: "#",
       icon: IconHelp,
     },
-    {
-      title: "Search",
-      url: "#",
-      icon: IconSearch,
-    },
+    // {
+    //   title: "Search",
+    //   url: "#",
+    //   icon: IconSearch,
+    // },
   ],
   documents: [
     {
-      name: "Data Library",
-      url: "#",
-      icon: IconDatabase,
+      title: "Clients",
+      url: "/dashboard/clients",
+      icon: IconRouter,
     },
+
     {
-      name: "Domain",
-      url: "#",
-      icon: IconBuildings,
-    },
-    {
-      name: "Groups",
+      title: "Groups",
       url: "/dashboard/groups",
       icon: IconStack2Filled,
     },
     {
-      name: "Roles",
-      url: "/dashboard/roles",
-      icon: IconCirclesFilled,
+      title: "Channels",
+      url: "/dashboard/channels",
+      icon: IconBuildingBroadcastTower,
     },
     {
-      name: "Users",
-      url: "/dashboard/users",
-      icon: IconUsers,
-    },
-    {
-      name: "Invitations",
-      url: "/dashboard/invitations",
-      icon: IconMailBolt,
+      title: "Data Library",
+      url: "#",
+      icon: IconDatabase,
     },
   ],
 };
