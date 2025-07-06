@@ -62,21 +62,21 @@ const data = {
       url: "/dashboard/users",
       icon: IconUsers,
     },
-    {
-      title: "Analytics",
-      url: "#",
-      icon: IconChartBar,
-    },
+    // {
+    //   title: "Analytics",
+    //   url: "#",
+    //   icon: IconChartBar,
+    // },
     {
       title: "Channels",
       url: "/dashboard/channels",
       icon: IconBuildingBroadcastTower,
     },
-    {
-      title: "Alarms",
-      url: "#",
-      icon: IconBellRinging,
-    },
+    // {
+    //   title: "Alarms",
+    //   url: "#",
+    //   icon: IconBellRinging,
+    // },
   ],
   navClouds: [
     {
