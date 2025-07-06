@@ -157,8 +157,8 @@ export async function disableGroup(groupId: string): Promise<boolean> {
 // Get all groups
 export async function getGroups(): Promise<Group[]> {
   try {
-    const listGroups = await groups.Groups({});
-    return listGroups.groups;
+    // const listGroups = await groups.Groups({});
+    // return listGroups.groups;
 
     return mockGroups;
   } catch (error) {
