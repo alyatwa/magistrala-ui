@@ -35,11 +35,8 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { TeamSwitcher } from "./team-switcher";
+import { DomainSwitcher } from "./team-switcher";
 
 const data = {
   user: {
@@ -182,7 +179,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
-        <TeamSwitcher />
+        <DomainSwitcher />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
