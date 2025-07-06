@@ -75,7 +75,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     id: "drag",
     header: () => null,
     cell: ({ row }) => (
-      <DragHandle id={row.original.invitee_user_id.toString()} />
+      <DragHandle id={row.original?.invitee_user_id?.toString() ?? "-"} />
     ),
   },
   {
@@ -112,7 +112,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         <span className="font-medium truncate w-32">
           {row.original.invitee_user_id}
         </span>
-        <CopyButton text={row.original.invitee_user_id.toString()} />
+        <CopyButton text={row.original?.invitee_user_id?.toString()??"-"} />
       </div>
     ),
   },
