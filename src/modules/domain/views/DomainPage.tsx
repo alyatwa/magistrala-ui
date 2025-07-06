@@ -156,7 +156,7 @@ export const DomainPage = () => {
   };
 
   return (
-    <div className="container mx-auto mt-4 pb-4 md:pb-8">
+    <div className="container mx-auto pb-4 md:pb-8">
       <div className="  m-2 sm:p-4">
         <div className="relative w-full overflow-x-auto">
           {domains.map((domain) => (
