@@ -76,12 +76,6 @@ const data = {
     //   url: "#",
     //   icon: IconChartBar,
     // },
-
-    {
-      title: "Alarms",
-      url: "/dashboard/alarms",
-      icon: IconBellRinging,
-    },
   ],
   navClouds: [
     {
@@ -164,6 +158,11 @@ const data = {
       title: "Channels",
       url: "/dashboard/channels",
       icon: IconBuildingBroadcastTower,
+    },
+    {
+      title: "Alarms",
+      url: "/dashboard/alarms",
+      icon: IconBellRinging,
     },
     {
       title: "Data Library",
