@@ -2,15 +2,19 @@ import SDK from "@absmach/magistrala-sdk";
 
 const defaultUrl = "http://localhost";
 
-const mgSdk = new SDK({
+export const mgSdk = new SDK({
   clientsUrl: `${defaultUrl}:9006`,
   channelsUrl: `${defaultUrl}:9007`,
   domainsUrl: `${defaultUrl}:9008`,
   groupsUrl: `${defaultUrl}:9009`,
+  alarmsUrl: `${defaultUrl}:9010`,
+  usersUrl: `${defaultUrl}:9011`,
+  rulesUrl: `${defaultUrl}:9012`,
+  authUrl: `${defaultUrl}:9001`,
 });
 
-const token = "<token>";
-const domainId = "<domainId>";
+export const token = "<token>";
+export const domainId = "<domainId>";
 
 type WithAuth<T> = {
   [K in keyof T]: T[K] extends (...args: [...infer P, any, any]) => infer R
@@ -147,6 +151,7 @@ export const clients = withAuth(mgSdk.Clients, domainId, token);
 export const channels = withAuth(mgSdk.Channels, domainId, token);
 export const groups = withAuth(mgSdk.Groups, domainId, token);
 export const users = withTokenOnly(mgSdk.Users, token);
+export const domains = withAuth(mgSdk.Domains, domainId, token);
 export const invitations = withInvitationAuth(mgSdk.Domains, domainId, token);
 
 // clients

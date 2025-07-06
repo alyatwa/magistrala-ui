@@ -161,7 +161,7 @@ const data = {
     },
     {
       name: "Roles",
-      url: "#",
+      url: "/dashboard/roles",
       icon: IconCirclesFilled,
     },
     {
