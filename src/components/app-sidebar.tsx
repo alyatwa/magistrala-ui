@@ -77,11 +77,11 @@ const data = {
     //   icon: IconChartBar,
     // },
 
-    // {
-    //   title: "Alarms",
-    //   url: "#",
-    //   icon: IconBellRinging,
-    // },
+    {
+      title: "Alarms",
+      url: "/dashboard/alarms",
+      icon: IconBellRinging,
+    },
   ],
   navClouds: [
     {
