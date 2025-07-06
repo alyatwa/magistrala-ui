@@ -169,6 +169,7 @@ export async function getGroups(): Promise<Group[]> {
 
 // Get groups flattened (for table display)
 export const getGroupsFlattened = async (): Promise<Group[]> => {
+try{
   const groups = await getGroups();
   const flattened: Group[] = [];
 
@@ -182,7 +183,10 @@ export const getGroupsFlattened = async (): Promise<Group[]> => {
   }
 
   flattenGroups(groups);
-  return flattened;
+  return flattened;}
+catch(e:any){
+  return []
+}
 };
 
 // Get parent groups for dropdown
