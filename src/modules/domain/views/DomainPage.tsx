@@ -28,6 +28,8 @@ import {
   ShieldCheck,
   Upload,
 } from "lucide-react";
+import { CopyButton } from "@/components/copy-button";
+import TagsEditDialog from "../components/TagsEditDialog";
 
 interface DomainBasicInfo {
   id: string;
@@ -76,7 +78,6 @@ export const DomainPage = () => {
   } | null>(null);
   const [tempValues, setTempValues] = useState<Record<string, string>>({});
   const [viewMetadata, setViewMetadata] = useState<string | null>(null);
-  const [viewTags, setViewTags] = useState<string | null>(null);
 
   const handleFieldEdit = (
     domainId: string,
@@ -156,17 +157,14 @@ export const DomainPage = () => {
 
   return (
     <div className="container mx-auto mt-4 pb-4 md:pb-8">
-      <div className="border rounded-md p-2 sm:p-4">
+      <div className="border rounded-md m-2 sm:p-4">
         <div className="relative w-full overflow-x-auto">
           {domains.map((domain) => (
-            <Table
-              key={domain.id}
-              className="w-full caption-bottom text-sm mt-5 bg-white dark:bg-card"
-            >
+            <Table key={domain.id} className="w-full caption-bottom text-sm ">
               <TableHeader>
-                <TableRow className="border-b transition-colors hover:bg-transparent h-20">
+                <TableRow className="border-b transition-colors hover:bg-transparent h-10">
                   <TableHead
-                    className="text-foreground h-10 px-2 text-left align-middle whitespace-nowrap text-2xl font-bold"
+                    className="text-foreground h-8 px-2 text-left align-middle whitespace-nowrap text-2xl font-bold"
                     colSpan={3}
                   >
                     {domain.name}
@@ -246,15 +244,7 @@ export const DomainPage = () => {
                   <TableCell className="p-2 align-middle whitespace-nowrap">
                     <div className="flex flex-row justify-between">
                       <span className="me-1">{domain.id}</span>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="h-8 rounded-md gap-1.5 px-3"
-                        onClick={() => copyToClipboard(domain.id)}
-                      >
-                        <span className="sr-only">Copy</span>
-                        <Copy className="size-4" />
-                      </Button>
+                      <CopyButton text={domain.id} />
                     </div>
                   </TableCell>
                 </TableRow>
@@ -343,54 +333,16 @@ export const DomainPage = () => {
                         ))}
                       </div>
                       <div className="flex flex-row gap-4">
-                        <Dialog>
-                          <DialogTrigger asChild>
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              className="size-9 hover:bg-primary/10"
-                              onClick={() => setViewTags(domain.id)}
-                            >
-                              <Pencil className="size-4" />
-                            </Button>
-                          </DialogTrigger>
-                          <DialogContent>
-                            <DialogHeader>
-                              <DialogTitle>Edit Tags</DialogTitle>
-                            </DialogHeader>
-                            <div className="space-y-4">
-                              <Input
-                                placeholder="Enter tags separated by commas"
-                                value={
-                                  getTempValue(domain.id, "tags") ||
-                                  domain.tags.join(", ")
-                                }
-                                onChange={(e) =>
-                                  setTempValues({
-                                    ...tempValues,
-                                    [`${domain.id}_tags`]: e.target.value,
-                                  })
-                                }
-                              />
-                              <div className="flex justify-end gap-2">
-                                <Button
-                                  variant="outline"
-                                  onClick={() => setViewTags(null)}
-                                >
-                                  Cancel
-                                </Button>
-                                <Button
-                                  onClick={() => {
-                                    handleFieldSave(domain.id, "tags");
-                                    setViewTags(null);
-                                  }}
-                                >
-                                  Save
-                                </Button>
-                              </div>
-                            </div>
-                          </DialogContent>
-                        </Dialog>
+                        <TagsEditDialog
+                          initialTags={domain.tags}
+                          onTagsUpdate={(tags) => {
+                            setDomains(
+                              domains.map((d) =>
+                                d.id === domain.id ? { ...d, tags } : d
+                              )
+                            );
+                          }}
+                        />
                       </div>
                     </div>
                   </TableCell>

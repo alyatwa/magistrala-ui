@@ -55,11 +55,7 @@ const data = {
       url: "/dashboard/domain",
       icon: IconBuildings,
     },
-    {
-      title: "Users",
-      url: "/dashboard/users",
-      icon: IconUsers,
-    },
+
     {
       title: "Roles",
       url: "/dashboard/roles",
