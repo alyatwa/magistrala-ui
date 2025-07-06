@@ -11,6 +11,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
+import { Router } from "lucide-react";
 
 export function NavMain({
   items,
@@ -38,8 +39,8 @@ export function NavMain({
               className="size-8 group-data-[collapsible=icon]:opacity-0"
               variant="outline"
             >
-              <IconMail />
-              <span className="sr-only">Inbox</span>
+              <Router />
+              <span className="sr-only">Client</span>
             </Button>
           </SidebarMenuItem>
         </SidebarMenu>
