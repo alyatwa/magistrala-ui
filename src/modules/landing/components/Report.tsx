@@ -9,11 +9,8 @@ export const Report = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-gray-400 bg-opacity-30"></div>
-
       {/* Report Card */}
-      <div className="relative z-10 bg-white bg-opacity-95 rounded-3xl p-8 max-w-md w-full shadow-2xl">
+      <div className="relative z-10 bg-white bg-opacity-95 rounded-3xl p-8 max-w-[380px] w-full shadow-2xl">
         {/* Header with logo and year */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
