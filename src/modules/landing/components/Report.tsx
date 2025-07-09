@@ -1,12 +1,13 @@
 export const Report = () => {
   return (
     <div
-      className="relative w-full flex items-center justify-center p-8"
+      className="relative w-full flex items-center justify-start p-32"
       style={{
         backgroundImage: "url('/landing/report-bg.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
+        transform: "scaleX(-1) scaleY(-1)",
       }}
     >
       {/* Report Card */}
@@ -20,7 +21,7 @@ export const Report = () => {
             <span className="text-gray-800 font-medium">Impact</span>
           </div>
           <div className="bg-white border-2 border-green-600 rounded-full px-4 py-1">
-            <span className="text-green-600 font-medium">2024</span>
+            <span className="text-green-600 font-medium">2025</span>
           </div>
         </div>
 
