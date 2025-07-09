@@ -7,7 +7,7 @@ export const Report = () => {
         style={{
           backgroundImage: "url('/landing/report-bg.jpg')",
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "bottom",
           backgroundRepeat: "no-repeat",
           transform: "scaleX(-1) scaleY(-1)",
         }}
