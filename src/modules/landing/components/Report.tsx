@@ -1,15 +1,18 @@
 export const Report = () => {
   return (
-    <div
-      className="relative w-full flex items-center justify-start p-32"
-      style={{
-        backgroundImage: "url('/landing/report-bg.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        transform: "scaleX(-1) scaleY(-1)",
-      }}
-    >
+    <div className="relative w-full flex items-center justify-start px-32 py-8">
+      {/* Background layer with transform */}
+      <div
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: "url('/landing/report-bg.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          transform: "scaleX(-1) scaleY(-1)",
+        }}
+      />
+
       {/* Report Card */}
       <div className="relative z-10 bg-white bg-opacity-95 rounded-3xl p-8 max-w-[380px] w-full shadow-2xl">
         {/* Header with logo and year */}
@@ -29,7 +32,7 @@ export const Report = () => {
         <h1 className="text-4xl font-light text-gray-900 mb-8 leading-tight">
           Our Studio's
           <br />
-          2024 Impact
+          2025 Impact
           <br />
           Report
         </h1>
