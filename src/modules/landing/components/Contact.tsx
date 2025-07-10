@@ -121,7 +121,7 @@ export const Contact = () => {
 
             <Button
               type="submit"
-              className="w-full py-4 text-white bg-green-600 hover:bg-green-700 rounded-xl"
+              className="w-full py-4 text-white bg-green-600 hover:bg-green-700 rounded-2xl"
             >
               Send Message
             </Button>

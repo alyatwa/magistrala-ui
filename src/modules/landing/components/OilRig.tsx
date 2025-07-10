@@ -25,7 +25,7 @@ export const OilRig = () => {
           <div className="lg:pl-8">
             <h2 className="text-4xl font-light text-gray-900 leading-tight mb-6">
               TRANSFORM YOUR INDUSTRY{" "}
-              <span className="text-green-400">— THE SMART WAY</span>
+              <span className="text-gray-900">— THE SMART WAY</span>
             </h2>
 
             <p className="text-lg text-gray-700 mb-8 leading-relaxed">
@@ -36,7 +36,7 @@ export const OilRig = () => {
               efficiency and reduce costs.
             </p>
 
-            <button className="text-white bg-green-600 hover:bg-green-700 rounded-xl font-semibold py-4 px-8 rounded-full transition-colors ">
+            <button className="text-white bg-green-600 hover:bg-green-700 rounded-xl font-semibold py-4 px-8 rounded-2xl transition-colors ">
               Start Your IoT Journey
             </button>
           </div>
