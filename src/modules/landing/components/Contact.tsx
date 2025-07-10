@@ -39,9 +39,8 @@ export const Contact = () => {
 
   return (
     <div className="relative w-full flex items-center justify-start px-32 py-8">
-      {/* Background layer with transform */}
       <div
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full backdrop-blur-sm "
         style={{
           backgroundImage: "url('/landing/contact-bg.jpg')",
           backgroundSize: "cover",
@@ -49,7 +48,6 @@ export const Contact = () => {
           backgroundRepeat: "no-repeat",
         }}
       />
-
       {/* Contact Card */}
       <div className="relative z-10 bg-white bg-opacity-95 rounded-3xl p-8 max-w-[480px] w-full shadow-2xl">
         {/* Header with logo */}
