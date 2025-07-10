@@ -1,0 +1,47 @@
+import React from "react";
+
+export const OilRig = () => {
+  return (
+    <section className="bg-gray-50 py-16 w-full px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
+          {/* Video Section */}
+          <div className="mb-8 lg:mb-0">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-green-900">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-64 sm:h-80 lg:h-96 object-cover"
+              >
+                <source src="/landing/oil-rig.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+
+          {/* Content Section */}
+          <div className="lg:pl-8">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              TRANSFORM YOUR INDUSTRY{" "}
+              <span className="text-green-800">— THE SMART WAY</span>
+            </h2>
+
+            <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+              Our IoT platform helps you digitize and optimize operations across
+              industries in just a few steps. From oil & gas to manufacturing,
+              agriculture to smart cities — everything you need in one place.
+              Monitor, analyze, and control your assets remotely to boost
+              efficiency and reduce costs.
+            </p>
+
+            <button className="bg-green-800 hover:bg-green-900 text-white font-semibold py-4 px-8 rounded-full transition-colors duration-200 shadow-lg hover:shadow-xl">
+              Start Your IoT Journey
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};

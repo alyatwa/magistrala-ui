@@ -48,21 +48,11 @@ export const Contact = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="backdrop-blur-xs   w-full h-full " />
+        <div className="backdrop-blur-[2px]  w-full h-full " />
       </div>
 
       {/* Contact Card */}
       <div className="relative z-10 bg-white bg-opacity-95 rounded-3xl p-8 max-w-[420px] w-full shadow-2xl">
-        {/* Header with logo */}
-        {/* <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-3">
-            <div className="w-6 h-6 bg-green-600 rounded flex items-center justify-center">
-              <span className="text-white font-bold text-sm">✉</span>
-            </div>
-            <span className="text-gray-800 font-medium">Contact</span>
-          </div>
-        </div> */}
-
         {/* Main Title */}
         <h1 className="text-4xl font-light text-gray-900 mb-6 leading-tight">
           Get in Touch
