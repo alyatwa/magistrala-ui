@@ -8,7 +8,7 @@ export const OilRig = () => {
         <div className="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
           {/* Video Section */}
           <div className="mb-8 lg:mb-0">
-            <div className="relative rounded-2xl overflow-hidden shadow-lg bg-green-600">
+            <div className="relative rounded-2xl overflow-hidden shadow-lg bg-white">
               <video
                 autoPlay
                 loop
