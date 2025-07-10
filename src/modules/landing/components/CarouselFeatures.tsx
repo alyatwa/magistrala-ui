@@ -85,8 +85,8 @@ export default function CarouselFeatures() {
   return (
     <section className="w-full py-16 bg-[#f6f6f6]">
       <div className="px-4">
-        <div className="relative max-w-6xl mx-auto">
-          <h2 className="text-2xl md:text-3xl md:w-1/3 w-full font-light mb-6 text-gray-900 leading-tight">
+        <div className="relative ">
+          <h2 className="text-2xl md:text-3xl md:w-1/3 w-full font-light mb-12 text-gray-900 leading-tight">
             {activeFeature.title}
           </h2>
           <div className="flex items-start justify-between gap-8">
@@ -96,10 +96,10 @@ export default function CarouselFeatures() {
                 <button
                   key={feature.tagButton.id}
                   onClick={() => setActiveTag(feature.tagButton.label)}
-                  className={`flex items-center p-2 rounded-3xl text-xs font-medium transition-colors ${
+                  className={`flex items-center py-2 px-3 rounded-3xl text-xs font-medium transition-colors ${
                     activeTag === feature.tagButton.label
                       ? "bg-green-600 text-white "
-                      : "bg-white/80 text-gray-600 hover:bg-white "
+                      : "bg-transparent text-gray-600 hover:bg-white"
                   }`}
                 >
                   <span className="capitalize">
@@ -111,7 +111,7 @@ export default function CarouselFeatures() {
 
             {/* Main Content - Right Side */}
 
-            <Card className="bg-transparent border-0 shadow-none">
+            <Card className="bg-transparent border-0 py-0 shadow-none">
               <div className="grid md:grid-cols-2 gap-0">
                 {/* Image Side */}
                 <CardContent className="p-0">
