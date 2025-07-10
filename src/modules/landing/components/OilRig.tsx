@@ -2,12 +2,12 @@ import React from "react";
 
 export const OilRig = () => {
   return (
-    <section className="bg-gray-50 py-16 w-full px-4 sm:px-6 lg:px-8">
+    <section className="bg-green-50 py-16 w-full px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
           {/* Video Section */}
           <div className="mb-8 lg:mb-0">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-green-900">
+            <div className="relative rounded-2xl overflow-hidden shadow-lg bg-green-600">
               <video
                 autoPlay
                 loop
