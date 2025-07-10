@@ -82,7 +82,7 @@ export default function CarouselFeatures() {
     features[0];
 
   return (
-    <section className="w-full py-16 bg-gradient-to-br from-green-50 to-blue-50">
+    <section className="w-full py-16 bg-[#f6f6f6]">
       <div className="px-4">
         <div className="relative max-w-6xl mx-auto">
           <div className="flex gap-8">
@@ -92,29 +92,22 @@ export default function CarouselFeatures() {
                 <button
                   key={feature.tagButton.id}
                   onClick={() => setActiveTag(feature.tagButton.label)}
-                  className={`flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors text-left ${
+                  className={`flex items-center space-x-3 px-4 py-3 rounded-3xl text-sm font-medium transition-colors text-left ${
                     activeTag === feature.tagButton.label
-                      ? "bg-green-600 text-white shadow-lg"
-                      : "bg-white/80 text-gray-600 hover:bg-white hover:shadow-md"
+                      ? "bg-green-600 text-white "
+                      : "bg-white/80 text-gray-600 hover:bg-white "
                   }`}
                 >
-                  <span
-                    className={`text-xs font-bold min-w-[24px] h-6 flex items-center justify-center rounded-full ${
-                      activeTag === feature.tagButton.label
-                        ? "bg-white/20"
-                        : "bg-green-100 text-green-600"
-                    }`}
-                  >
-                    {feature.tagButton.id}
+                  <span className="capitalize">
+                    {feature.tagButton.id} {feature.tagButton.label}
                   </span>
-                  <span className="capitalize">{feature.tagButton.label}</span>
                 </button>
               ))}
             </div>
 
             {/* Main Content - Right Side */}
             <div className="flex-1">
-              <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+              <Card className="bg-transparent   border-0 shadow-none">
                 <div className="grid md:grid-cols-2 gap-0">
                   {/* Content Side */}
                   <CardHeader className="p-8 space-y-6">
@@ -164,7 +157,7 @@ export default function CarouselFeatures() {
 
                   {/* Image Side */}
                   <CardContent className="p-0">
-                    <div className="h-full min-h-[400px] relative overflow-hidden rounded-r-lg">
+                    <div className="h-[200px] relative overflow-hidden rounded-lg">
                       <Image
                         src={activeFeature.image}
                         alt={activeFeature.title}
