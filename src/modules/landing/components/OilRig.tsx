@@ -14,7 +14,7 @@ export const OilRig = () => {
                 loop
                 muted
                 playsInline
-                className="w-full h-64 sm:h-80 lg:h-96 object-cover"
+                className="w-full h-64  sm:h-80 lg:h-96 object-cover"
               >
                 <source src="/landing/oil-rig.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
