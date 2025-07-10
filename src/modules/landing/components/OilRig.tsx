@@ -2,7 +2,7 @@ import React from "react";
 
 export const OilRig = () => {
   return (
-    <section className="py-16 w-full px-4 sm:px-6 lg:px-8">
+    <section className="bg-green-50/30 py-16 w-full px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
           {/* Video Section */}
