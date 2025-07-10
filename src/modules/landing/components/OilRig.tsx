@@ -1,3 +1,4 @@
+import ButtonArrow from "@/components/button-arrow";
 import React from "react";
 
 export const OilRig = () => {
@@ -36,9 +37,7 @@ export const OilRig = () => {
               efficiency and reduce costs.
             </p>
 
-            <button className="text-white bg-green-600 hover:bg-green-700 rounded-xl font-semibold py-4 px-8 rounded-2xl transition-colors ">
-              Start Your IoT Journey
-            </button>
+            <ButtonArrow>Start Your IoT Journey</ButtonArrow>
           </div>
         </div>
       </div>

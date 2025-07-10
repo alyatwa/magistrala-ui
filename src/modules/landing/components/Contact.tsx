@@ -1,4 +1,5 @@
 "use client";
+import ButtonArrow from "@/components/button-arrow";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -11,6 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { IconSend } from "@tabler/icons-react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
@@ -119,12 +121,9 @@ export const Contact = () => {
               )}
             />
 
-            <Button
-              type="submit"
-              className="w-full py-8 text-white bg-green-600 hover:bg-green-700 rounded-2xl"
-            >
-              Send Message
-            </Button>
+            <ButtonArrow icon={<IconSend className="text-green-600" />}>
+              Send
+            </ButtonArrow>
           </form>
         </Form>
       </div>
