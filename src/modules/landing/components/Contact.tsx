@@ -17,7 +17,6 @@ import * as z from "zod";
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
-  subject: z.string().min(5, "Subject must be at least 5 characters"),
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
@@ -29,7 +28,6 @@ export const Contact = () => {
     defaultValues: {
       name: "",
       email: "",
-      subject: "",
       message: "",
     },
   });
@@ -57,7 +55,7 @@ export const Contact = () => {
         {/* Header with logo */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
-            <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center">
+            <div className="w-6 h-6 bg-green-600 rounded flex items-center justify-center">
               <span className="text-white font-bold text-sm">✉</span>
             </div>
             <span className="text-gray-800 font-medium">Contact</span>
@@ -72,14 +70,14 @@ export const Contact = () => {
         </h1>
 
         {/* Subtitle */}
-        <p className="text-gray-700 text-lg mb-8">
+        {/* <p className="text-gray-700 text-lg mb-8">
           We&apos;d love to hear from you. Send us a message and we&apos;ll
           respond as soon as possible.
-        </p>
+        </p> */}
 
         {/* Contact Form */}
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
             <FormField
               control={form.control}
               name="name"
@@ -114,20 +112,6 @@ export const Contact = () => {
 
             <FormField
               control={form.control}
-              name="subject"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Subject</FormLabel>
-                  <FormControl>
-                    <Input placeholder="What's this about?" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
               name="message"
               render={({ field }) => (
                 <FormItem>
@@ -146,19 +130,12 @@ export const Contact = () => {
 
             <Button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700"
+              className="w-full py-2 text-white bg-green-600 hover:bg-green-700 rounded-xl"
             >
               Send Message
             </Button>
           </form>
         </Form>
-
-        {/* Progress indicator */}
-        <div className="flex gap-2 mt-8">
-          <div className="h-1 w-8 bg-blue-600 rounded"></div>
-          <div className="h-1 w-8 bg-gray-300 rounded"></div>
-          <div className="h-1 w-8 bg-gray-300 rounded"></div>
-        </div>
       </div>
     </div>
   );
