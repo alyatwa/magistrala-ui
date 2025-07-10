@@ -49,7 +49,7 @@ export const Contact = () => {
         }}
       />
       {/* Contact Card */}
-      <div className="relative z-10 bg-white bg-opacity-95 rounded-3xl p-8 max-w-[480px] w-full shadow-2xl">
+      <div className="relative z-10 bg-white bg-opacity-95 rounded-3xl p-8 max-w-[420px] w-full shadow-2xl">
         {/* Header with logo */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
@@ -75,7 +75,7 @@ export const Contact = () => {
 
         {/* Contact Form */}
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
             <FormField
               control={form.control}
               name="name"
@@ -128,7 +128,7 @@ export const Contact = () => {
 
             <Button
               type="submit"
-              className="w-full py-2 text-white bg-green-600 hover:bg-green-700 rounded-xl"
+              className="w-full py-4 text-white bg-green-600 hover:bg-green-700 rounded-xl"
             >
               Send Message
             </Button>
