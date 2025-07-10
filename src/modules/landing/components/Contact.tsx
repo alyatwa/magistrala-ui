@@ -40,14 +40,17 @@ export const Contact = () => {
   return (
     <div className="relative w-full flex items-center justify-start px-32 py-8">
       <div
-        className="absolute inset-0 w-full h-full backdrop-blur-sm "
+        className="absolute inset-0 w-full h-full "
         style={{
           backgroundImage: "url('/landing/contact-bg.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
-      />
+      >
+        <div className="backdrop-blur-xs   w-full h-full " />
+      </div>
+
       {/* Contact Card */}
       <div className="relative z-10 bg-white bg-opacity-95 rounded-3xl p-8 max-w-[420px] w-full shadow-2xl">
         {/* Header with logo */}
