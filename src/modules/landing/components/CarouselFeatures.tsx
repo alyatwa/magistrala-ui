@@ -85,7 +85,7 @@ export default function CarouselFeatures() {
   return (
     <section className="w-full py-16 bg-[#f6f6f6]">
       <div className="px-4">
-        <div className="relative ">
+        <div className="relative max-w-6xl mx-auto">
           <h2 className="text-2xl md:text-3xl md:w-1/3 w-full font-light mb-12 text-gray-900 leading-tight">
             {activeFeature.title}
           </h2>
@@ -111,10 +111,10 @@ export default function CarouselFeatures() {
 
             {/* Main Content - Right Side */}
 
-            <Card className="bg-transparent border-0 py-0 shadow-none">
+            <div className="bg-transparent border-0 py-0 shadow-none">
               <div className="grid md:grid-cols-2 gap-0">
                 {/* Image Side */}
-                <CardContent className="p-0">
+                <div className="p-0">
                   <div className="h-[200px] w-[300px] relative overflow-hidden rounded-3xl">
                     <Image
                       src={activeFeature.image}
@@ -124,21 +124,21 @@ export default function CarouselFeatures() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                   </div>
-                </CardContent>
+                </div>
                 {/* Content Side */}
-                <CardHeader className="px-8">
-                  <CardDescription className="text-gray-600 w-full text-base leading-relaxed">
+                <div className="px-8">
+                  <p className="text-gray-600 w-full text-base leading-relaxed">
                     {activeFeature.description}
-                  </CardDescription>
+                  </p>
 
                   <div className="space-y-4">
                     {activeFeature.readMoreLink && (
                       <ButtonArrow>Start</ButtonArrow>
                     )}
                   </div>
-                </CardHeader>
+                </div>
               </div>
-            </Card>
+            </div>
           </div>
         </div>
       </div>
