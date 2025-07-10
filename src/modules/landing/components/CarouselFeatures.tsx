@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
 
@@ -74,102 +74,109 @@ const features: FeatureItem[] = [
 ];
 
 export default function CarouselFeatures() {
-  // const [currentSlide, setCurrentSlide] = useState(0);
   const [activeTag, setActiveTag] = useState("technology");
 
+  // Find the currently active feature based on the selected tag
+  const activeFeature =
+    features.find((feature) => feature.tagButton.label === activeTag) ||
+    features[0];
+
   return (
-    <section className="py-16 bg-gradient-to-br from-green-50 to-blue-50">
-      <div className="container mx-auto px-4">
-        <div className="relative">
-          {/* Slider Content */}
-          <div className="overflow-hidden mx-12">
-            <div className="flex transition-transform duration-500 ease-in-out">
+    <section className="w-full py-16 bg-gradient-to-br from-green-50 to-blue-50">
+      <div className="px-4">
+        <div className="relative max-w-6xl mx-auto">
+          <div className="flex gap-8">
+            {/* Vertical Navigation Buttons - Left Side */}
+            <div className="flex flex-col space-y-4 min-w-[200px]">
               {features.map((feature) => (
-                <div key={feature.id} className="w-full flex-shrink-0 px-4">
-                  <Card className="mx-auto max-w-4xl bg-white/80 backdrop-blur-sm border-0 shadow-lg">
-                    <div className="grid md:grid-cols-2 gap-0">
-                      {/* Content Side */}
-                      <CardHeader className="p-8 space-y-6">
-                        <div>
-                          <Badge
-                            variant="secondary"
-                            className="mb-4 bg-green-100 text-green-800 hover:bg-green-200"
-                          >
-                            {feature.category}
-                          </Badge>
-                          <CardTitle className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">
-                            {feature.title}
-                          </CardTitle>
-                        </div>
-
-                        <CardDescription className="text-gray-600 text-base leading-relaxed">
-                          {feature.description}
-                        </CardDescription>
-
-                        {/* Tags */}
-                        <div className="space-y-4">
-                          <div className="flex flex-wrap gap-2">
-                            {feature.tags.map((tag, index) => (
-                              <Badge
-                                key={index}
-                                variant="outline"
-                                className="text-xs bg-white/50"
-                              >
-                                {tag}
-                              </Badge>
-                            ))}
-                          </div>
-
-                          {feature.readMoreLink && (
-                            <div className="flex items-center gap-2">
-                              <Button
-                                variant="link"
-                                className="p-0 h-auto text-green-600 hover:text-green-700"
-                              >
-                                Read more
-                              </Button>
-                              <ChevronRight className="h-4 w-4 text-green-600" />
-                            </div>
-                          )}
-                        </div>
-                      </CardHeader>
-
-                      {/* Image Side */}
-                      <CardContent className="p-0">
-                        <div className="h-full min-h-[300px] relative overflow-hidden rounded-lg">
-                          <Image
-                            src={feature.image}
-                            alt={feature.title}
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                        </div>
-                      </CardContent>
-                    </div>
-                  </Card>
-                </div>
+                <button
+                  key={feature.tagButton.id}
+                  onClick={() => setActiveTag(feature.tagButton.label)}
+                  className={`flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors text-left ${
+                    activeTag === feature.tagButton.label
+                      ? "bg-green-600 text-white shadow-lg"
+                      : "bg-white/80 text-gray-600 hover:bg-white hover:shadow-md"
+                  }`}
+                >
+                  <span
+                    className={`text-xs font-bold min-w-[24px] h-6 flex items-center justify-center rounded-full ${
+                      activeTag === feature.tagButton.label
+                        ? "bg-white/20"
+                        : "bg-green-100 text-green-600"
+                    }`}
+                  >
+                    {feature.tagButton.id}
+                  </span>
+                  <span className="capitalize">{feature.tagButton.label}</span>
+                </button>
               ))}
             </div>
-          </div>
 
-          {/* Tag Navigation Buttons */}
-          <div className="flex justify-center mt-8 space-x-6">
-            {features.map((feature) => (
-              <button
-                key={feature.tagButton.id}
-                onClick={() => setActiveTag(feature.tagButton.label)}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  activeTag === feature.tagButton.label
-                    ? "bg-green-600 text-white"
-                    : "bg-gray-200 text-gray-600 hover:bg-gray-300"
-                }`}
-              >
-                <span className="text-xs opacity-70">
-                  {feature.tagButton.id}
-                </span>
-                <span>{feature.tagButton.label}</span>
-              </button>
-            ))}
+            {/* Main Content - Right Side */}
+            <div className="flex-1">
+              <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+                <div className="grid md:grid-cols-2 gap-0">
+                  {/* Content Side */}
+                  <CardHeader className="p-8 space-y-6">
+                    <div>
+                      <Badge
+                        variant="secondary"
+                        className="mb-4 bg-green-100 text-green-800 hover:bg-green-200"
+                      >
+                        {activeFeature.category}
+                      </Badge>
+                      <CardTitle className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">
+                        {activeFeature.title}
+                      </CardTitle>
+                    </div>
+
+                    <CardDescription className="text-gray-600 text-base leading-relaxed">
+                      {activeFeature.description}
+                    </CardDescription>
+
+                    {/* Tags */}
+                    <div className="space-y-4">
+                      <div className="flex flex-wrap gap-2">
+                        {activeFeature.tags.map((tag, index) => (
+                          <Badge
+                            key={index}
+                            variant="outline"
+                            className="text-xs bg-white/50"
+                          >
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+
+                      {activeFeature.readMoreLink && (
+                        <div className="flex items-center gap-2">
+                          <Button
+                            variant="link"
+                            className="p-0 h-auto text-green-600 hover:text-green-700"
+                          >
+                            Read more
+                          </Button>
+                          <ChevronRight className="h-4 w-4 text-green-600" />
+                        </div>
+                      )}
+                    </div>
+                  </CardHeader>
+
+                  {/* Image Side */}
+                  <CardContent className="p-0">
+                    <div className="h-full min-h-[400px] relative overflow-hidden rounded-r-lg">
+                      <Image
+                        src={activeFeature.image}
+                        alt={activeFeature.title}
+                        fill
+                        className="object-cover transition-opacity duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                    </div>
+                  </CardContent>
+                </div>
+              </Card>
+            </div>
           </div>
         </div>
       </div>
