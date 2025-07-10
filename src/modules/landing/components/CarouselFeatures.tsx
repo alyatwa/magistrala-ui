@@ -85,17 +85,17 @@ export default function CarouselFeatures() {
     <section className="w-full py-16 bg-[#f6f6f6]">
       <div className="px-4">
         <div className="relative max-w-6xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">
+          <h2 className="text-2xl md:text-3xl font-light mb-6 text-gray-900 leading-tight">
             {activeFeature.title}
           </h2>
           <div className="flex gap-8">
             {/* Vertical Navigation Buttons - Left Side */}
-            <div className="flex flex-col space-y-4 min-w-[200px]">
+            <div className="flex flex-col space-y-4">
               {features.map((feature) => (
                 <button
                   key={feature.tagButton.id}
                   onClick={() => setActiveTag(feature.tagButton.label)}
-                  className={`flex items-center space-x-3 px-4 py-3 rounded-3xl text-sm font-medium transition-colors text-left ${
+                  className={`flex items-center space-x-3 px-1 py-3 rounded-3xl text-sm font-medium transition-colors text-left ${
                     activeTag === feature.tagButton.label
                       ? "bg-green-600 text-white "
                       : "bg-white/80 text-gray-600 hover:bg-white "
@@ -109,44 +109,43 @@ export default function CarouselFeatures() {
             </div>
 
             {/* Main Content - Right Side */}
-            <div className="flex-1">
-              <Card className="bg-transparent   border-0 shadow-none">
-                <div className="grid md:grid-cols-2 gap-0">
-                  {/* Image Side */}
-                  <CardContent className="p-0">
-                    <div className="h-[200px] w-[400px] relative overflow-hidden rounded-lg">
-                      <Image
-                        src={activeFeature.image}
-                        alt={activeFeature.title}
-                        fill
-                        className="object-cover transition-opacity duration-300"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                    </div>
-                  </CardContent>
-                  {/* Content Side */}
-                  <CardHeader className="p-8 space-y-6">
-                    <CardDescription className="text-gray-600 text-base leading-relaxed">
-                      {activeFeature.description}
-                    </CardDescription>
 
-                    <div className="space-y-4">
-                      {activeFeature.readMoreLink && (
-                        <div className="flex items-center gap-2">
-                          <Button
-                            variant="link"
-                            className="p-0 h-auto text-green-600 hover:text-green-700"
-                          >
-                            Read more
-                          </Button>
-                          <ChevronRight className="h-4 w-4 text-green-600" />
-                        </div>
-                      )}
-                    </div>
-                  </CardHeader>
-                </div>
-              </Card>
-            </div>
+            <Card className="bg-transparent   border-0 shadow-none">
+              <div className="grid md:grid-cols-2 gap-0">
+                {/* Image Side */}
+                <CardContent className="p-0">
+                  <div className="h-[200px] w-[300px] relative overflow-hidden rounded-lg">
+                    <Image
+                      src={activeFeature.image}
+                      alt={activeFeature.title}
+                      fill
+                      className="object-cover transition-opacity duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                  </div>
+                </CardContent>
+                {/* Content Side */}
+                <CardHeader className="px-8">
+                  <CardDescription className="text-gray-600 text-base leading-relaxed">
+                    {activeFeature.description}
+                  </CardDescription>
+
+                  <div className="space-y-4">
+                    {activeFeature.readMoreLink && (
+                      <div className="flex items-center gap-2">
+                        <Button
+                          variant="link"
+                          className="p-0 h-auto text-green-600 hover:text-green-700"
+                        >
+                          Read more
+                        </Button>
+                        <ChevronRight className="h-4 w-4 text-green-600" />
+                      </div>
+                    )}
+                  </div>
+                </CardHeader>
+              </div>
+            </Card>
           </div>
         </div>
       </div>
