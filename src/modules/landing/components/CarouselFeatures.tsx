@@ -85,6 +85,9 @@ export default function CarouselFeatures() {
     <section className="w-full py-16 bg-[#f6f6f6]">
       <div className="px-4">
         <div className="relative max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">
+            {activeFeature.title}
+          </h2>
           <div className="flex gap-8">
             {/* Vertical Navigation Buttons - Left Side */}
             <div className="flex flex-col space-y-4 min-w-[200px]">
@@ -109,38 +112,25 @@ export default function CarouselFeatures() {
             <div className="flex-1">
               <Card className="bg-transparent   border-0 shadow-none">
                 <div className="grid md:grid-cols-2 gap-0">
+                  {/* Image Side */}
+                  <CardContent className="p-0">
+                    <div className="h-[200px] w-[400px] relative overflow-hidden rounded-lg">
+                      <Image
+                        src={activeFeature.image}
+                        alt={activeFeature.title}
+                        fill
+                        className="object-cover transition-opacity duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                    </div>
+                  </CardContent>
                   {/* Content Side */}
                   <CardHeader className="p-8 space-y-6">
-                    <div>
-                      <Badge
-                        variant="secondary"
-                        className="mb-4 bg-green-100 text-green-800 hover:bg-green-200"
-                      >
-                        {activeFeature.category}
-                      </Badge>
-                      <CardTitle className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">
-                        {activeFeature.title}
-                      </CardTitle>
-                    </div>
-
                     <CardDescription className="text-gray-600 text-base leading-relaxed">
                       {activeFeature.description}
                     </CardDescription>
 
-                    {/* Tags */}
                     <div className="space-y-4">
-                      <div className="flex flex-wrap gap-2">
-                        {activeFeature.tags.map((tag, index) => (
-                          <Badge
-                            key={index}
-                            variant="outline"
-                            className="text-xs bg-white/50"
-                          >
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
-
                       {activeFeature.readMoreLink && (
                         <div className="flex items-center gap-2">
                           <Button
@@ -154,19 +144,6 @@ export default function CarouselFeatures() {
                       )}
                     </div>
                   </CardHeader>
-
-                  {/* Image Side */}
-                  <CardContent className="p-0">
-                    <div className="h-[200px] relative overflow-hidden rounded-lg">
-                      <Image
-                        src={activeFeature.image}
-                        alt={activeFeature.title}
-                        fill
-                        className="object-cover transition-opacity duration-300"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                    </div>
-                  </CardContent>
                 </div>
               </Card>
             </div>
