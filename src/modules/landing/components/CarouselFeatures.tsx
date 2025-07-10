@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
 
 interface FeatureItem {
   id: number;
@@ -19,6 +20,10 @@ interface FeatureItem {
   tags: string[];
   image: string;
   readMoreLink?: string;
+  tagButton: {
+    id: string;
+    label: string;
+  };
 }
 
 const features: FeatureItem[] = [
@@ -29,8 +34,9 @@ const features: FeatureItem[] = [
       "At Foli, we harness cutting-edge renewable energy technologies to power a sustainable future. Our innovative solutions, from solar farms to wind turbines, lead the way in eco-friendly power generation.",
     category: "SUSTAINABILITY",
     tags: ["Technology", "Innovation", "Solar panels", "Windmills"],
-    image: "/api/placeholder/400/250",
+    image: "/landing/slider/cargo.jpg",
     readMoreLink: "#",
+    tagButton: { id: "01", label: "technology" },
   },
   {
     id: 2,
@@ -39,8 +45,9 @@ const features: FeatureItem[] = [
       "Revolutionary smart grid solutions that optimize energy distribution and reduce waste. Our advanced monitoring systems ensure maximum efficiency across all energy networks.",
     category: "TECHNOLOGY",
     tags: ["Smart Grid", "Efficiency", "Monitoring", "Distribution"],
-    image: "/api/placeholder/400/250",
+    image: "/landing/slider/electricity.jpg",
     readMoreLink: "#",
+    tagButton: { id: "02", label: "innovation" },
   },
   {
     id: 3,
@@ -49,55 +56,34 @@ const features: FeatureItem[] = [
       "Our commitment to achieving carbon neutrality through innovative processes and sustainable practices. Leading the industry transformation towards a greener future.",
     category: "ENVIRONMENT",
     tags: ["Carbon Neutral", "Sustainability", "Green Future", "Innovation"],
-    image: "/api/placeholder/400/250",
+    image: "/landing/slider/factory.jpg",
     readMoreLink: "#",
+    tagButton: { id: "03", label: "solar panels" },
+  },
+  {
+    id: 4,
+    title: "WINDMILL POWER GENERATION EXCELLENCE",
+    description:
+      "Advanced windmill technology that maximizes energy capture and efficiency. Our state-of-the-art wind farms provide clean, renewable energy solutions for communities worldwide.",
+    category: "RENEWABLE",
+    tags: ["Windmills", "Clean Energy", "Efficiency", "Power Generation"],
+    image: "/landing/slider/wind-farm.jpg",
+    readMoreLink: "#",
+    tagButton: { id: "04", label: "windmills" },
   },
 ];
 
 export default function CarouselFeatures() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % features.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + features.length) % features.length);
-  };
+  // const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeTag, setActiveTag] = useState("technology");
 
   return (
     <section className="py-16 bg-gradient-to-br from-green-50 to-blue-50">
       <div className="container mx-auto px-4">
         <div className="relative">
-          {/* Navigation Buttons */}
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={prevSlide}
-              className="bg-white/80 backdrop-blur-sm hover:bg-white"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
-          </div>
-
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 z-10">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={nextSlide}
-              className="bg-white/80 backdrop-blur-sm hover:bg-white"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </Button>
-          </div>
-
           {/* Slider Content */}
           <div className="overflow-hidden mx-12">
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-            >
+            <div className="flex transition-transform duration-500 ease-in-out">
               {features.map((feature) => (
                 <div key={feature.id} className="w-full flex-shrink-0 px-4">
                   <Card className="mx-auto max-w-4xl bg-white/80 backdrop-blur-sm border-0 shadow-lg">
@@ -150,8 +136,8 @@ export default function CarouselFeatures() {
 
                       {/* Image Side */}
                       <CardContent className="p-0">
-                        <div className="h-full min-h-[300px] relative overflow-hidden rounded-r-lg">
-                          <img
+                        <div className="h-full min-h-[300px] relative overflow-hidden rounded-lg">
+                          <Image
                             src={feature.image}
                             alt={feature.title}
                             className="w-full h-full object-cover"
@@ -166,18 +152,23 @@ export default function CarouselFeatures() {
             </div>
           </div>
 
-          {/* Slide Indicators */}
-          <div className="flex justify-center mt-8 space-x-2">
-            {features.map((_, index) => (
+          {/* Tag Navigation Buttons */}
+          <div className="flex justify-center mt-8 space-x-6">
+            {features.map((feature) => (
               <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  index === currentSlide
-                    ? "bg-green-600"
-                    : "bg-gray-300 hover:bg-gray-400"
+                key={feature.tagButton.id}
+                onClick={() => setActiveTag(feature.tagButton.label)}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  activeTag === feature.tagButton.label
+                    ? "bg-green-600 text-white"
+                    : "bg-gray-200 text-gray-600 hover:bg-gray-300"
                 }`}
-              />
+              >
+                <span className="text-xs opacity-70">
+                  {feature.tagButton.id}
+                </span>
+                <span>{feature.tagButton.label}</span>
+              </button>
             ))}
           </div>
         </div>
