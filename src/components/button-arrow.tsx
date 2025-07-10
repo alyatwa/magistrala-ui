@@ -12,20 +12,20 @@ interface ButtonArrowProps {
 
 export default function ButtonArrow({
   children,
-  icon = <IconArrowUpRight className="text-green-600" />,
+  icon = <IconArrowUpRight className="text-white" />,
   className = "",
   onClick,
 }: ButtonArrowProps) {
   return (
     <Button
       className={cn(
-        `flex items-center gap-2 rounded-full px-4 py-2 `,
+        `flex items-center gap-2 rounded-full px-4 py-4 bg-white`,
         className
       )}
       onClick={onClick}
     >
-      <span className="text-sm font-medium text-green-600">{children}</span>
-      <div className="flex aspect-square h-6 w-6 items-center justify-center rounded-full bg-white/20">
+      <span className="text-sm font-medium text-black">{children}</span>
+      <div className="flex aspect-square h-6 w-6 items-center justify-center rounded-full bg-green-600">
         {icon}
       </div>
     </Button>
