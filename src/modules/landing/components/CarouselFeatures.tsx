@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
+import ButtonArrow from "@/components/button-arrow";
 
 interface FeatureItem {
   id: number;
@@ -88,14 +89,14 @@ export default function CarouselFeatures() {
           <h2 className="text-2xl md:text-3xl font-light mb-6 text-gray-900 leading-tight">
             {activeFeature.title}
           </h2>
-          <div className="flex gap-8">
+          <div className="flex items-start justify-between gap-8">
             {/* Vertical Navigation Buttons - Left Side */}
             <div className="flex flex-col space-y-4">
               {features.map((feature) => (
                 <button
                   key={feature.tagButton.id}
                   onClick={() => setActiveTag(feature.tagButton.label)}
-                  className={`flex items-center space-x-3 px-1 py-3 rounded-3xl text-sm font-medium transition-colors text-left ${
+                  className={`flex items-center p-2 rounded-3xl text-sm font-medium transition-colors ${
                     activeTag === feature.tagButton.label
                       ? "bg-green-600 text-white "
                       : "bg-white/80 text-gray-600 hover:bg-white "
@@ -110,11 +111,11 @@ export default function CarouselFeatures() {
 
             {/* Main Content - Right Side */}
 
-            <Card className="bg-transparent   border-0 shadow-none">
+            <Card className="bg-transparent border-0 shadow-none">
               <div className="grid md:grid-cols-2 gap-0">
                 {/* Image Side */}
                 <CardContent className="p-0">
-                  <div className="h-[200px] w-[300px] relative overflow-hidden rounded-lg">
+                  <div className="h-[200px] w-[300px] relative overflow-hidden rounded-3xl">
                     <Image
                       src={activeFeature.image}
                       alt={activeFeature.title}
@@ -126,21 +127,13 @@ export default function CarouselFeatures() {
                 </CardContent>
                 {/* Content Side */}
                 <CardHeader className="px-8">
-                  <CardDescription className="text-gray-600 text-base leading-relaxed">
+                  <CardDescription className="text-gray-600 w-full text-base leading-relaxed">
                     {activeFeature.description}
                   </CardDescription>
 
                   <div className="space-y-4">
                     {activeFeature.readMoreLink && (
-                      <div className="flex items-center gap-2">
-                        <Button
-                          variant="link"
-                          className="p-0 h-auto text-green-600 hover:text-green-700"
-                        >
-                          Read more
-                        </Button>
-                        <ChevronRight className="h-4 w-4 text-green-600" />
-                      </div>
+                      <ButtonArrow>Start</ButtonArrow>
                     )}
                   </div>
                 </CardHeader>
