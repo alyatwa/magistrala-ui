@@ -19,13 +19,13 @@ export default function ButtonArrow({
   return (
     <Button
       className={cn(
-        `flex items-center gap-2 rounded-full px-4 py-6 bg-white hover:bg-white border-green-300`,
+        `flex items-center gap-2 rounded-full px-4 py-6 bg-white hover:bg-white border border-green-500`,
         className
       )}
       onClick={onClick}
     >
       <span className="text-sm font-medium text-black">{children}</span>
-      <div className="flex aspect-square h-6 w-6 items-center justify-center rounded-full bg-green-600">
+      <div className="flex aspect-square h-7 w-7 items-center justify-center rounded-full bg-green-500">
         {icon}
       </div>
     </Button>
