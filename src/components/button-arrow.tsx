@@ -19,7 +19,7 @@ export default function ButtonArrow({
   return (
     <Button
       className={cn(
-        `flex items-center gap-2 rounded-full px-4 py-6 bg-white hover:bg-white`,
+        `flex items-center gap-2 rounded-full px-4 py-6 bg-white hover:bg-white border-green-300`,
         className
       )}
       onClick={onClick}

@@ -121,7 +121,7 @@ export const Contact = () => {
               )}
             />
 
-            <ButtonArrow icon={<IconSend className="text-green-600" />}>
+            <ButtonArrow icon={<IconSend className="text-white" />}>
               Send
             </ButtonArrow>
           </form>
