@@ -1,14 +1,20 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { ArrowRight, Zap } from "lucide-react"
-import Image from "next/image"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { ArrowRight, Zap } from "lucide-react";
+import Image from "next/image";
 
-export const   Hero=()=> {
+export const Hero = () => {
   return (
     <div className="min-h-screen w-screen -mx-[calc((100vw-100%)/2)]  relative overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <Image src="/hero-bg.png" alt="Mountain landscape" fill className="object-cover" priority />
+        <Image
+          src="/hero-turbine.jpg"
+          alt="BG"
+          fill
+          className="object-cover"
+          priority
+        />
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
@@ -24,22 +30,40 @@ export const   Hero=()=> {
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#" className="text-white/90 hover:text-white transition-colors">
+              <a
+                href="#"
+                className="text-white/90 hover:text-white transition-colors"
+              >
                 Home
               </a>
-              <a href="#" className="text-white/90 hover:text-white transition-colors">
+              <a
+                href="#"
+                className="text-white/90 hover:text-white transition-colors"
+              >
                 About us
               </a>
-              <a href="#" className="text-white/90 hover:text-white transition-colors">
+              <a
+                href="#"
+                className="text-white/90 hover:text-white transition-colors"
+              >
                 Solution
               </a>
-              <a href="#" className="text-white/90 hover:text-white transition-colors">
+              <a
+                href="#"
+                className="text-white/90 hover:text-white transition-colors"
+              >
                 Projects
               </a>
-              <a href="#" className="text-white/90 hover:text-white transition-colors">
+              <a
+                href="#"
+                className="text-white/90 hover:text-white transition-colors"
+              >
                 Achievements
               </a>
-              <a href="#" className="text-white/90 hover:text-white transition-colors">
+              <a
+                href="#"
+                className="text-white/90 hover:text-white transition-colors"
+              >
                 Contact
               </a>
             </div>
@@ -57,7 +81,8 @@ export const   Hero=()=> {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight mb-8">
-              Powering the Future with Sustainable <span className="text-green-300">Hydropower</span>
+              Powering the Future with Sustainable{" "}
+              <span className="text-green-300">Hydropower</span>
             </h1>
           </div>
 
@@ -112,11 +137,15 @@ export const   Hero=()=> {
                   />
                 </div>
                 <div className="flex-1 p-6">
-                  <h3 className="text-xl font-semibold text-white mb-2">HydroAtom</h3>
+                  <h3 className="text-xl font-semibold text-white mb-2">
+                    HydroAtom
+                  </h3>
                   <p className="text-white/80 text-sm">
-                    HydroAtom harnesses water and <span className="text-white/60">atomization</span>
+                    HydroAtom harnesses water and{" "}
+                    <span className="text-white/60">atomization</span>
                     <br />
-                    for <span className="text-white/60">sustainable energy.</span>
+                    for{" "}
+                    <span className="text-white/60">sustainable energy.</span>
                   </p>
                 </div>
                 <div className="p-6">
@@ -144,9 +173,12 @@ export const   Hero=()=> {
                   />
                 </div>
                 <div className="flex-1 p-6">
-                  <h3 className="text-xl font-semibold text-white mb-2">Sunlight Energy</h3>
+                  <h3 className="text-xl font-semibold text-white mb-2">
+                    Sunlight Energy
+                  </h3>
                   <p className="text-white/80 text-sm">
-                    Sunlight Energy <span className="text-white/60">captures</span>
+                    Sunlight Energy{" "}
+                    <span className="text-white/60">captures</span>
                     <br />
                     <span className="text-white/60">solar power</span> for clean
                     <br />
@@ -178,13 +210,19 @@ export const   Hero=()=> {
                   />
                 </div>
                 <div className="flex-1 p-6">
-                  <h3 className="text-xl font-semibold text-white mb-2">Wind Harvesting</h3>
+                  <h3 className="text-xl font-semibold text-white mb-2">
+                    Wind Harvesting
+                  </h3>
                   <p className="text-white/80 text-sm">
-                    Wind Energy <span className="text-white/60">captures the</span>
+                    Wind Energy{" "}
+                    <span className="text-white/60">captures the</span>
                     <br />
-                    <span className="text-white/60">wind's power</span> to generate
+                    <span className="text-white/60">wind's power</span> to
+                    generate
                     <br />
-                    <span className="text-white/60">clean renewable energy.</span>
+                    <span className="text-white/60">
+                      clean renewable energy.
+                    </span>
                   </p>
                 </div>
                 <div className="p-6">
@@ -201,5 +239,5 @@ export const   Hero=()=> {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

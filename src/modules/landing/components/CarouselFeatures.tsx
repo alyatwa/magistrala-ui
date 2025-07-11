@@ -270,6 +270,7 @@ const imgs = [
   "/landing/tech.jpg",
   "/landing/marque/equp.jpg",
   "/landing/marque/cr.jpg",
+  "/landing/marque/wind-turbine.jpg",
 ];
 
 const ImageCard = ({ img }: { img: string }) => {
