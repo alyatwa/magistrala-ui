@@ -2,5 +2,7 @@
   "editor.quickSuggestions": {
     "strings": true
   },
-  "tailwindCSS.experimental.configFile": "src/app/globals.css"
+  "tailwindCSS.experimental.configFile": "src/app/globals.css",
+  "IDX.aI.enableInlineCompletion": true,
+  "IDX.aI.enableCodebaseIndexing": true
 }

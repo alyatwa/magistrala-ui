@@ -76,7 +76,7 @@ export default function CarouselFeatures() {
 
   return (
     <section className="w-full py-16 bg-[#f6f6f6]">
-      <div className="px-4 flex gap-4 flex-col relative max-w-6xl mx-auto">
+      <div className="px-4 flex gap-10 flex-col relative container mx-auto">
         <div className="">
           <h2 className="text-2xl md:text-3xl md:w-1/3 w-full font-light mb-12 text-gray-900 leading-tight">
             {activeFeature.title}
@@ -90,7 +90,7 @@ export default function CarouselFeatures() {
                   onClick={() => setActiveTag(feature.tagButton.label)}
                   className={`flex items-center py-2 px-3 rounded-3xl text-xs font-medium transition-colors ${
                     activeTag === feature.tagButton.label
-                      ? "bg-green-600 text-white "
+                      ? "bg-[#539f58] text-white "
                       : "bg-transparent text-gray-600 hover:bg-white"
                   }`}
                 >
@@ -133,8 +133,8 @@ export default function CarouselFeatures() {
         </div>
 
         <div className="flex flex-row gap-4">
-          <Tech />
-          <Solutions />
+          <Solutions /><Tech />
+          
         </div>
       </div>
     </section>
@@ -143,10 +143,10 @@ export default function CarouselFeatures() {
 
 const Tech = () => {
   return (
-    <div className="flex w-1/4 flex-row gap-4 rounded-3xl bg-green-600 p-4">
+    <div className="flex w-1/3 flex-row gap-4 rounded-3xl bg-[#539f58] p-4">
       {/* text*/}
-      <div className="flex flex-col justify-between w-[60%]">
-        <ButtonArrow icon={<IconAccessPoint className="text-white" />}>
+      <div className="flex flex-col justify-between w-[50%]">
+         <ButtonArrow icon={<IconAccessPoint className="text-white" />}>
           Technology
         </ButtonArrow>
         <div className="flex flex-col gap-2">
@@ -157,20 +157,23 @@ const Tech = () => {
             At Foli, we harness cutting-edge renewable energy technologies to
             power a sustainable future.
           </p>
-        </div>
+        </div> 
+      
       </div>
 
       {/* image */}
-      <div className=" h-[400px] w-[222px] relative overflow-hidden rounded-2xl">
+      <div className=" h-[310px] w-[212px] relative overflow-hidden rounded-2xl">
+          <div className="flex z-[2] absolute top-2 right-2 aspect-square h-7 w-7 items-center justify-center rounded-full bg-[#539f58]">
+          <IconArrowUpRight className="text-white" />
+        </div>
+        
         <Image
           src="/landing/tech.jpg"
           alt="tech"
           fill
           className="object-cover transition-opacity duration-300"
         />
-        <div className="flex top-2 right-2 aspect-square h-7 w-7 items-center justify-center rounded-full bg-green-500">
-          <IconArrowUpRight className="text-white" />
-        </div>
+      
       </div>
     </div>
   );
@@ -178,6 +181,6 @@ const Tech = () => {
 
 const Solutions = () => {
   return (
-    <div className="flex w-3/4 flex-row bg-white gap-4 rounded-3xl p-4"></div>
+    <div className="flex w-2/3 flex-row bg-white gap-4 rounded-3xl p-4"></div>
   );
 };
