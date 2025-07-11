@@ -145,8 +145,10 @@ const Tech = () => {
   return (
     <div className="flex w-1/3 flex-row gap-4 rounded-2xl bg-green-600 p-4">
       {/* text*/}
-      <div className="flex flex-col justify-between">
-        <ButtonArrow icon={<IconAccessPoint />}>Technology</ButtonArrow>
+      <div className="flex flex-col justify-between w-[60%]">
+        <ButtonArrow icon={<IconAccessPoint className="text-white" />}>
+          Technology
+        </ButtonArrow>
         <div className="flex flex-col gap-2">
           <h3 className="capitalize text-2xl font-light">
             FOLI'S GREEN ENERGY INNOVATIONS UNLEASHED WORLDWIDE
@@ -161,7 +163,7 @@ const Tech = () => {
       </div>
 
       {/* image */}
-      <div className="h-[400px] w-[250px] relative overflow-hidden rounded-2xl">
+      <div className=" h-[400px] w-[350px] relative overflow-hidden rounded-2xl">
         <Image
           src="/landing/tech.jpg"
           alt="tech"
