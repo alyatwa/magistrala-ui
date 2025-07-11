@@ -111,7 +111,7 @@ export default function CarouselFeatures() {
 
             {/* Main Content - Right Side */}
 
-            <div className="max-w-[70%] justify-end border-0 py-0 flex gap-6 ">
+            <div className="md:max-w-[50%] justify-end border-0 py-0 flex gap-6 ">
               {/* Image Side */}
 
               <div className="h-[200px] w-[300px] relative overflow-hidden rounded-2xl">
