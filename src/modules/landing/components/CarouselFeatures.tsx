@@ -1,17 +1,9 @@
 "use client";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
+
 import { useState } from "react";
 import Image from "next/image";
 import ButtonArrow from "@/components/button-arrow";
+import { IconAccessPoint, IconArrowUpRight } from "@tabler/icons-react";
 
 interface FeatureItem {
   id: number;
@@ -114,7 +106,7 @@ export default function CarouselFeatures() {
             <div className="md:max-w-[50%] justify-end border-0 py-0 flex gap-6 ">
               {/* Image Side */}
 
-              <div className="h-[200px] w-[300px] relative overflow-hidden rounded-2xl">
+              <div className="h-[200px] w-[350px] relative overflow-hidden rounded-2xl">
                 <Image
                   src={activeFeature.image}
                   alt={activeFeature.title}
@@ -139,7 +131,53 @@ export default function CarouselFeatures() {
             </div>
           </div>
         </div>
+
+        <div className="flex flex-row gap-4">
+          <Tech />
+          <Solutions />
+        </div>
       </div>
     </section>
   );
 }
+
+const Tech = () => {
+  return (
+    <div className="flex w-1/3 flex-row gap-4 rounded-2xl bg-green-600 p-4">
+      {/* text*/}
+      <div className="flex flex-col justify-between">
+        <ButtonArrow icon={<IconAccessPoint />}>Technology</ButtonArrow>
+        <div className="flex flex-col gap-2">
+          <h3 className="capitalize text-2xl font-light">
+            FOLI'S GREEN ENERGY INNOVATIONS UNLEASHED WORLDWIDE
+          </h3>
+          <p className="text-sm">
+            At Foli, we harness cutting-edge renewable energy technologies to
+            power a sustainable future. Our innovative solutions, from solar
+            farms to wind turbines, lead the way in eco-friendly power
+            generation.
+          </p>
+        </div>
+      </div>
+
+      {/* image */}
+      <div className="h-[400px] w-[250px] relative overflow-hidden rounded-2xl">
+        <Image
+          src="/landing/tech.jpg"
+          alt="tech"
+          fill
+          className="object-cover transition-opacity duration-300"
+        />
+        <div className="flex top-2 right-2 aspect-square h-7 w-7 items-center justify-center rounded-full bg-green-500">
+          <IconArrowUpRight className="text-white" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Solutions = () => {
+  return (
+    <div className="flex w-2/3 flex-row bg-white gap-4 rounded-2xl p-4"></div>
+  );
+};
