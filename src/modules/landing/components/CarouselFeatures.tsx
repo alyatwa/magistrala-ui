@@ -111,7 +111,7 @@ export default function CarouselFeatures() {
 
             {/* Main Content - Right Side */}
 
-            <div className="bg-transparent border-0 py-0 flex gap-4 shadow-none">
+            <div className="bg-transparent max-w-[70%] justify-end border-0 py-0 flex gap-4 shadow-none">
               {/* Image Side */}
 
               <div className="h-[200px] w-[300px] relative overflow-hidden rounded-3xl">
@@ -125,7 +125,7 @@ export default function CarouselFeatures() {
               </div>
 
               {/* Content Side */}
-              <div className="grid gap-2 max-w-2/3">
+              <div className="flex flex-col justify-between gap-2 max-w-2/3">
                 <p className="text-gray-600 w-full text-base leading-relaxed">
                   {activeFeature.description}
                 </p>
