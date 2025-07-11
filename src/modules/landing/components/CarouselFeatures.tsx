@@ -111,10 +111,10 @@ export default function CarouselFeatures() {
 
             {/* Main Content - Right Side */}
 
-            <div className="bg-transparent max-w-[70%] justify-end border-0 py-0 flex gap-4 shadow-none">
+            <div className="max-w-[70%] justify-end border-0 py-0 flex gap-6 ">
               {/* Image Side */}
 
-              <div className="h-[200px] w-[300px] relative overflow-hidden rounded-3xl">
+              <div className="h-[200px] w-[300px] relative overflow-hidden rounded-2xl">
                 <Image
                   src={activeFeature.image}
                   alt={activeFeature.title}
@@ -130,7 +130,7 @@ export default function CarouselFeatures() {
                   {activeFeature.description}
                 </p>
 
-                <div className="space-y-4">
+                <div className="flex justify-end">
                   {activeFeature.readMoreLink && (
                     <ButtonArrow>Start</ButtonArrow>
                   )}
