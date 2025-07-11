@@ -8,12 +8,14 @@ interface ButtonArrowProps {
   icon?: ReactNode;
   className?: string;
   onClick?: () => void;
+  classNameIcon?:string
 }
 
 export default function ButtonArrow({
   children,
   icon = <IconArrowUpRight className="text-white" />,
   className = "",
+  classNameIcon="",
   onClick,
 }: ButtonArrowProps) {
   return (
@@ -27,7 +29,9 @@ export default function ButtonArrow({
       <span className="text-xs font-medium text-black min-w-[55px]">
         {children}
       </span>
-      <div className="flex aspect-square h-7 w-7 items-center justify-center rounded-full bg-[#539f58]">
+      <div className={cn("flex aspect-square h-7 w-7 items-center justify-center rounded-full bg-[#539f58]", 
+        classNameIcon
+      )}>
         {icon}
       </div>
     </Button>

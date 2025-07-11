@@ -8,7 +8,7 @@ import { Report } from "../components/Report";
 export const LandingPage = () => {
   return (
     <div className="grid w-full overflow-hidden items-center bg-[#f6f6f6] justify-items-center min-h-screen ">
-      <main className="flex flex-col container">
+      <main className="flex flex-col container px-4">
         <Hero/>
         <CarouselFeatures />
         <OilRig />
