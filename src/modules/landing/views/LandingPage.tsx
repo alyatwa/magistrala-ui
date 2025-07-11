@@ -4,6 +4,7 @@ import { Footer } from "../components/Footer";
 import { Hero } from "../components/Hero";
 import { OilRig } from "../components/OilRig";
 import { Report } from "../components/Report";
+import { Sources } from "../components/Sources";
 
 export const LandingPage = () => {
   return (
@@ -13,6 +14,7 @@ export const LandingPage = () => {
         <CarouselFeatures />
         <OilRig />
         <Report />
+        <Sources />
         <Contact />
       </main>
       <Footer />

@@ -84,7 +84,7 @@ export default function CarouselFeatures() {
       );
       const nextIndex = (currentIndex + 1) % features.length;
       setActiveTag(features[nextIndex].tagButton.label);
-    }, 5000); // Change every 1 second
+    }, 7000); // Change every 1 second
 
     return () => clearInterval(interval);
   }, [activeTag]);
@@ -131,7 +131,7 @@ export default function CarouselFeatures() {
   };
 
   return (
-    <section className="w-full py-16 ">
+    <section className="w-screen -mx-[calc((100vw-100%)/2)] px-10 py-20 ">
       <div className=" flex gap-14 flex-col relative   ">
         <div className="">
           <AnimatePresence mode="wait">
@@ -250,7 +250,7 @@ const Tech = () => {
       </div>
 
       {/* image */}
-      <div className=" h-[310px] w-[202px] relative overflow-hidden rounded-2xl">
+      <div className=" h-[310px] w-[212px] relative overflow-hidden rounded-2xl">
         <div className="flex z-[2] absolute top-2 right-2 aspect-square h-7 w-7 items-center justify-center rounded-full bg-[#539f58]">
           <IconArrowUpRight className="text-white" />
         </div>

@@ -1,3 +1,4 @@
+import { Logo } from "@/components/shared/Logo";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
  
@@ -30,12 +31,8 @@ export const Footer = () => {
     
             {/* Footer Navigation */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center pt-8 border-t border-green-100">
-              <div className="flex items-center space-x-2 mb-4 md:mb-0">
-                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                  <span className="text-[#539f58] font-bold text-sm">F</span>
-                </div>
-                <span className="font-medium">FlowGen</span>
-              </div>
+             
+                <Logo /> 
     
               <nav className="flex flex-wrap gap-6 text-sm opacity-80">
                 <a href="#" className="hover:opacity-100 transition-opacity">
