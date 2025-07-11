@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import ButtonArrow from "@/components/button-arrow";
-import { IconAccessPoint, IconArrowUpRight } from "@tabler/icons-react";
+import { IconAccessPoint, IconArrowUpRight, IconCloudNetwork } from "@tabler/icons-react"; 
+import { Marquee } from "@/components/ui/marquee";
+import { cn } from "@/lib/utils";
 
 interface FeatureItem {
   id: number;
@@ -78,7 +80,7 @@ export default function CarouselFeatures() {
       );
       const nextIndex = (currentIndex + 1) % features.length;
       setActiveTag(features[nextIndex].tagButton.label);
-    }, 1000); // Change every 1 second
+    }, 4000); // Change every 1 second
 
     return () => clearInterval(interval);
   }, [activeTag]);
@@ -92,7 +94,7 @@ export default function CarouselFeatures() {
   const contentVariants = {
     enter: {
       opacity: 0,
-      x: 50,
+      x: 20,
     },
     center: {
       opacity: 1,
@@ -100,14 +102,14 @@ export default function CarouselFeatures() {
     },
     exit: {
       opacity: 0,
-      x: -50,
+      x: -20,
     },
   };
 
   const imageVariants = {
     enter: {
       opacity: 0,
-      scale: 0.95,
+      scale: 0.98,
     },
     center: {
       opacity: 1,
@@ -115,18 +117,18 @@ export default function CarouselFeatures() {
     },
     exit: {
       opacity: 0,
-      scale: 1.05,
+      scale: 1.01,
     },
   };
 
   const transition = {
-    duration: 0.3,
+    duration: 1.5,
     ease: "easeOut" as const,
   };
 
   return (
     <section className="w-full py-16 bg-[#f6f6f6]">
-      <div className="px-4 flex gap-10 flex-col relative container mx-auto">
+      <div className="px-4 flex gap-14 flex-col relative container mx-auto">
         <div className="">
           <AnimatePresence mode="wait">
             <motion.h2
@@ -136,7 +138,7 @@ export default function CarouselFeatures() {
               animate="center"
               exit="exit"
               transition={transition}
-              className="text-2xl md:text-3xl md:w-1/3 w-full font-light mb-12 text-gray-900 leading-tight"
+              className="text-2xl md:text-3xl md:w-1/3 min-h-[120px] w-full font-light mb-12 text-gray-900 leading-tight"
             >
               {activeFeature.title}
             </motion.h2>
@@ -151,11 +153,10 @@ export default function CarouselFeatures() {
                   onClick={() => setActiveTag(feature.tagButton.label)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`flex items-center py-2 px-3 rounded-3xl text-xs font-medium transition-colors ${
-                    activeTag === feature.tagButton.label
+                  className={`flex items-center py-2 px-3 rounded-3xl text-xs font-medium transition-colors ${activeTag === feature.tagButton.label
                       ? "bg-[#539f58] text-white "
                       : "bg-transparent text-gray-600 hover:bg-white"
-                  }`}
+                    }`}
                 >
                   <span className="capitalize text-nowrap">
                     {`${feature.tagButton.id} ${feature.tagButton.label}`}
@@ -215,7 +216,7 @@ export default function CarouselFeatures() {
           </div>
         </div>
 
-        <div className="flex flex-row gap-4">
+        <div className="flex max-h-[340px] flex-row gap-4">
           <Solutions />
           <Tech />
         </div>
@@ -244,7 +245,7 @@ const Tech = () => {
       </div>
 
       {/* image */}
-      <div className=" h-[310px] w-[212px] relative overflow-hidden rounded-2xl">
+      <div className=" h-[310px] w-[202px] relative overflow-hidden rounded-2xl">
         <div className="flex z-[2] absolute top-2 right-2 aspect-square h-7 w-7 items-center justify-center rounded-full bg-[#539f58]">
           <IconArrowUpRight className="text-white" />
         </div>
@@ -260,8 +261,89 @@ const Tech = () => {
   );
 };
 
-const Solutions = () => {
+ 
+
+const reviews = [
+  {
+    name: "Jack",
+    username: "@jack",
+    body: "I've never seen anything like this before. It's amazing. I love it.",
+    img: "https://avatar.vercel.sh/jack",
+  },
+  {
+    name: "Jill",
+    username: "@jill",
+    body: "I don't know what to say. I'm speechless. This is amazing.",
+    img: "https://avatar.vercel.sh/jill",
+  },
+  {
+    name: "John",
+    username: "@john",
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: "https://avatar.vercel.sh/john",
+  },
+];
+ 
+ 
+const secondRow = reviews.slice(reviews.length / 2);
+ 
+const ReviewCard = ({
+  img,
+  name,
+  username,
+  body,
+}: {
+  img: string;
+  name: string;
+  username: string;
+  body: string;
+}) => {
   return (
-    <div className="flex w-2/3 flex-row bg-white gap-4 rounded-3xl p-4"></div>
+    <figure
+      className={cn(
+        "relative h-full w-fit sm:w-36 cursor-pointer overflow-hidden rounded-xl border p-4",
+        // light styles
+        "border-gray-950/[.1] bg-gray-600 hover:bg-gray-950/[.05]", 
+      )}
+    >
+      <div className="flex flex-row items-center gap-2">
+        <img className="rounded-full" width="32" height="32" alt="" src={img} />
+        <div className="flex flex-col">
+          <figcaption className="text-sm font-medium dark:text-white">
+            {name}
+          </figcaption>
+          <p className="text-xs font-medium dark:text-white/40">{username}</p>
+        </div>
+      </div>
+      <blockquote className="mt-2 text-sm">{body}</blockquote>
+    </figure>
   );
 };
+ 
+const Solutions = () => {
+  return (
+    <div className="flex w-2/3 flex-1 flex-row bg-white gap-4 rounded-3xl p-4 relative  items-center justify-between overflow-hidden">
+        {/* text*/}
+      <div className="flex flex-col justify-between h-full w-[50%]">
+        <ButtonArrow className="bg-gray-50 border-none" icon={<IconCloudNetwork className="text-white " />}>
+          Solutions
+        </ButtonArrow>
+        <div className="flex flex-col gap-2 text-gray-600">
+          <h3 className="capitalize text-2xl font-light">
+            FOLI'S GREEN ENERGY
+          </h3>
+          <p className="text-sm">
+            At Foli, we harness cutting-edge renewable energy technologies to
+            power a sustainable future.
+          </p>
+        </div>
+      </div>
+      <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
+        {secondRow.map((review) => (
+          <ReviewCard key={review.username} {...review} />
+        ))}
+      </Marquee>
+     
+      </div>
+  );
+}
