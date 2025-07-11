@@ -143,7 +143,7 @@ export default function CarouselFeatures() {
 
 const Tech = () => {
   return (
-    <div className="flex w-1/3 flex-row gap-4 rounded-3xl bg-green-600 p-4">
+    <div className="flex w-1/4 flex-row gap-4 rounded-3xl bg-green-600 p-4">
       {/* text*/}
       <div className="flex flex-col justify-between w-[60%]">
         <ButtonArrow icon={<IconAccessPoint className="text-white" />}>
@@ -151,19 +151,17 @@ const Tech = () => {
         </ButtonArrow>
         <div className="flex flex-col gap-2">
           <h3 className="capitalize text-2xl font-light">
-            FOLI'S GREEN ENERGY INNOVATIONS UNLEASHED WORLDWIDE
+            FOLI'S GREEN ENERGY
           </h3>
           <p className="text-sm">
             At Foli, we harness cutting-edge renewable energy technologies to
-            power a sustainable future. Our innovative solutions, from solar
-            farms to wind turbines, lead the way in eco-friendly power
-            generation.
+            power a sustainable future.
           </p>
         </div>
       </div>
 
       {/* image */}
-      <div className=" h-[400px] w-[350px] relative overflow-hidden rounded-2xl">
+      <div className=" h-[400px] w-[222px] relative overflow-hidden rounded-2xl">
         <Image
           src="/landing/tech.jpg"
           alt="tech"
@@ -180,6 +178,6 @@ const Tech = () => {
 
 const Solutions = () => {
   return (
-    <div className="flex w-2/3 flex-row bg-white gap-4 rounded-3xl p-4"></div>
+    <div className="flex w-3/4 flex-row bg-white gap-4 rounded-3xl p-4"></div>
   );
 };
