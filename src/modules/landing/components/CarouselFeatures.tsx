@@ -276,17 +276,16 @@ const ImageCard = ({ img }: { img: string }) => {
   return (
     <figure
       className={cn(
-        "relative h-full w-fit sm:w-36 cursor-pointer overflow-hidden rounded-xl border p-4",
-        // light styles
-        "border-gray-950/[.1] bg-gray-600 hover:bg-gray-950/[.05]"
+        "relative h-full w-fit overflow-hidden rounded-2xl   bg-gray-100",
+        
       )}
     >
       <Image
         src={img}
         alt="img"
-        width={200}
+        width={220}
         height={200}
-        className="rounded-full mb-2"
+        className=" "
       />
     </figure>
   );
