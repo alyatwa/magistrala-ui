@@ -102,8 +102,8 @@ export default function CarouselFeatures() {
                       : "bg-transparent text-gray-600 hover:bg-white"
                   }`}
                 >
-                  <span className="capitalize">
-                    {feature.tagButton.id} {feature.tagButton.label}
+                  <span className="capitalize text-nowrap">
+                    {`${feature.tagButton.id} ${feature.tagButton.label}`}
                   </span>
                 </button>
               ))}
@@ -111,31 +111,29 @@ export default function CarouselFeatures() {
 
             {/* Main Content - Right Side */}
 
-            <div className="bg-transparent border-0 py-0 shadow-none">
-              <div className="grid md:grid-cols-2 gap-0">
-                {/* Image Side */}
-                <div className="p-0">
-                  <div className="h-[200px] w-[300px] relative overflow-hidden rounded-3xl">
-                    <Image
-                      src={activeFeature.image}
-                      alt={activeFeature.title}
-                      fill
-                      className="object-cover transition-opacity duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                  </div>
-                </div>
-                {/* Content Side */}
-                <div className="px-8">
-                  <p className="text-gray-600 w-full text-base leading-relaxed">
-                    {activeFeature.description}
-                  </p>
+            <div className="bg-transparent border-0 py-0 flex gap-4 shadow-none">
+              {/* Image Side */}
 
-                  <div className="space-y-4">
-                    {activeFeature.readMoreLink && (
-                      <ButtonArrow>Start</ButtonArrow>
-                    )}
-                  </div>
+              <div className="h-[200px] w-[300px] relative overflow-hidden rounded-3xl">
+                <Image
+                  src={activeFeature.image}
+                  alt={activeFeature.title}
+                  fill
+                  className="object-cover transition-opacity duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+              </div>
+
+              {/* Content Side */}
+              <div className="grid gap-2">
+                <p className="text-gray-600 w-full text-base leading-relaxed">
+                  {activeFeature.description}
+                </p>
+
+                <div className="space-y-4">
+                  {activeFeature.readMoreLink && (
+                    <ButtonArrow>Start</ButtonArrow>
+                  )}
                 </div>
               </div>
             </div>
