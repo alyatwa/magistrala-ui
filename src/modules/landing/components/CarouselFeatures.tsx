@@ -76,7 +76,7 @@ export default function CarouselFeatures() {
 
   return (
     <section className="w-full py-16 bg-[#f6f6f6]">
-      <div className="px-4 md:flex-row flex-col relative max-w-6xl mx-auto">
+      <div className="px-4 flex gap-4 flex-col relative max-w-6xl mx-auto">
         <div className="">
           <h2 className="text-2xl md:text-3xl md:w-1/3 w-full font-light mb-12 text-gray-900 leading-tight">
             {activeFeature.title}
