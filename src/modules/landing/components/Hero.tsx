@@ -4,6 +4,39 @@ import { ArrowRight, Zap } from "lucide-react";
 import Image from "next/image";
 
 export const Hero = () => {
+  const navLinks = [
+    { href: "#", label: "Home" },
+    { href: "#", label: "About us" },
+    { href: "#", label: "Solution" },
+    { href: "#", label: "Projects" },
+    { href: "#", label: "Achievements" },
+    { href: "#", label: "Contact" },
+  ];
+
+  const featureCards = [
+    {
+      title: "HydroAtom",
+      description:
+        "HydroAtom harnesses water and atomization for sustainable energy.",
+      alt: "Waterfall representing hydropower",
+      image: "/placeholder.svg?height=96&width=128",
+    },
+    {
+      title: "Sunlight Energy",
+      description:
+        "Sunlight Energy captures solar power for clean sustainable energy.",
+      alt: "Solar panels in landscape",
+      image: "/placeholder.svg?height=96&width=128",
+    },
+    {
+      title: "Wind Harvesting",
+      description:
+        "Wind Energy captures the wind's power to generate clean renewable energy.",
+      alt: "Wind turbines in green landscape",
+      image: "/placeholder.svg?height=96&width=128",
+    },
+  ];
+
   return (
     <div className="min-h-screen w-screen -mx-[calc((100vw-100%)/2)]  relative overflow-hidden">
       {/* Background Image */}
@@ -30,42 +63,15 @@ export const Hero = () => {
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
-              <a
-                href="#"
-                className="text-white/90 hover:text-white transition-colors"
-              >
-                Home
-              </a>
-              <a
-                href="#"
-                className="text-white/90 hover:text-white transition-colors"
-              >
-                About us
-              </a>
-              <a
-                href="#"
-                className="text-white/90 hover:text-white transition-colors"
-              >
-                Solution
-              </a>
-              <a
-                href="#"
-                className="text-white/90 hover:text-white transition-colors"
-              >
-                Projects
-              </a>
-              <a
-                href="#"
-                className="text-white/90 hover:text-white transition-colors"
-              >
-                Achievements
-              </a>
-              <a
-                href="#"
-                className="text-white/90 hover:text-white transition-colors"
-              >
-                Contact
-              </a>
+              {navLinks.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.href}
+                  className="text-white/90 hover:text-white transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
             </div>
 
             <Button className="bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 transition-all">
@@ -123,119 +129,40 @@ export const Hero = () => {
 
       {/* Glassy Feature Cards */}
       <div className="relative z-40 max-w-7xl mx-auto px-6 mt-32 pb-12">
-        <div className="grid gap-6 max-w-4xl">
-          {/* HydroAtom Card */}
-          <Card className="backdrop-blur-md bg-black/40 border border-white/20 overflow-hidden group hover:bg-black/50 transition-all duration-300">
-            <CardContent className="p-0">
-              <div className="flex items-center">
-                <div className="relative w-32 h-24 flex-shrink-0">
-                  <Image
-                    src="/placeholder.svg?height=96&width=128"
-                    alt="Waterfall representing hydropower"
-                    fill
-                    className="object-cover"
-                  />
+        <div className="grid md:grid-cols-3 gap-6">
+          {featureCards.map((card, index) => (
+            <Card
+              key={index}
+              className="backdrop-blur-md bg-black/40 border border-white/20 overflow-hidden group hover:bg-black/50 transition-all duration-300"
+            >
+              <CardContent className="p-0">
+                <div className="flex flex-col">
+                  <div className="relative w-full h-24">
+                    <Image
+                      src={card.image}
+                      alt={card.alt}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-white mb-2">
+                      {card.title}
+                    </h3>
+                    <p className="text-white/80 text-sm mb-4">
+                      {card.description}
+                    </p>
+                    <Button
+                      size="icon"
+                      className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30"
+                    >
+                      <ArrowRight className="w-5 h-5 text-white" />
+                    </Button>
+                  </div>
                 </div>
-                <div className="flex-1 p-6">
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    HydroAtom
-                  </h3>
-                  <p className="text-white/80 text-sm">
-                    HydroAtom harnesses water and{" "}
-                    <span className="text-white/60">atomization</span>
-                    <br />
-                    for{" "}
-                    <span className="text-white/60">sustainable energy.</span>
-                  </p>
-                </div>
-                <div className="p-6">
-                  <Button
-                    size="icon"
-                    className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30"
-                  >
-                    <ArrowRight className="w-5 h-5 text-white" />
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Sunlight Energy Card */}
-          <Card className="backdrop-blur-md bg-black/40 border border-white/20 overflow-hidden group hover:bg-black/50 transition-all duration-300">
-            <CardContent className="p-0">
-              <div className="flex items-center">
-                <div className="relative w-32 h-24 flex-shrink-0">
-                  <Image
-                    src="/placeholder.svg?height=96&width=128"
-                    alt="Solar panels in landscape"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="flex-1 p-6">
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    Sunlight Energy
-                  </h3>
-                  <p className="text-white/80 text-sm">
-                    Sunlight Energy{" "}
-                    <span className="text-white/60">captures</span>
-                    <br />
-                    <span className="text-white/60">solar power</span> for clean
-                    <br />
-                    <span className="text-white/60">sustainable energy.</span>
-                  </p>
-                </div>
-                <div className="p-6">
-                  <Button
-                    size="icon"
-                    className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30"
-                  >
-                    <ArrowRight className="w-5 h-5 text-white" />
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Wind Harvesting Card */}
-          <Card className="backdrop-blur-md bg-black/40 border border-white/20 overflow-hidden group hover:bg-black/50 transition-all duration-300">
-            <CardContent className="p-0">
-              <div className="flex items-center">
-                <div className="relative w-32 h-24 flex-shrink-0">
-                  <Image
-                    src="/placeholder.svg?height=96&width=128"
-                    alt="Wind turbines in green landscape"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="flex-1 p-6">
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    Wind Harvesting
-                  </h3>
-                  <p className="text-white/80 text-sm">
-                    Wind Energy{" "}
-                    <span className="text-white/60">captures the</span>
-                    <br />
-                    <span className="text-white/60">wind's power</span> to
-                    generate
-                    <br />
-                    <span className="text-white/60">
-                      clean renewable energy.
-                    </span>
-                  </p>
-                </div>
-                <div className="p-6">
-                  <Button
-                    size="icon"
-                    className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30"
-                  >
-                    <ArrowRight className="w-5 h-5 text-white" />
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </div>
