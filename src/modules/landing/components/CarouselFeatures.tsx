@@ -125,7 +125,7 @@ export default function CarouselFeatures() {
               </div>
 
               {/* Content Side */}
-              <div className="grid gap-2">
+              <div className="grid gap-2 max-w-2/3">
                 <p className="text-gray-600 w-full text-base leading-relaxed">
                   {activeFeature.description}
                 </p>
