@@ -4,7 +4,11 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import ButtonArrow from "@/components/button-arrow";
-import { IconAccessPoint, IconArrowUpRight, IconCloudNetwork } from "@tabler/icons-react"; 
+import {
+  IconAccessPoint,
+  IconArrowUpRight,
+  IconCloudNetwork,
+} from "@tabler/icons-react";
 import { Marquee } from "@/components/ui/marquee";
 import { cn } from "@/lib/utils";
 
@@ -153,10 +157,11 @@ export default function CarouselFeatures() {
                   onClick={() => setActiveTag(feature.tagButton.label)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`flex items-center py-2 px-3 rounded-3xl text-xs font-medium transition-colors ${activeTag === feature.tagButton.label
+                  className={`flex items-center py-2 px-3 rounded-3xl text-xs font-medium transition-colors ${
+                    activeTag === feature.tagButton.label
                       ? "bg-[#539f58] text-white "
                       : "bg-transparent text-gray-600 hover:bg-white"
-                    }`}
+                  }`}
                 >
                   <span className="capitalize text-nowrap">
                     {`${feature.tagButton.id} ${feature.tagButton.label}`}
@@ -261,71 +266,41 @@ const Tech = () => {
   );
 };
 
- 
-
-const reviews = [
-  {
-    name: "Jack",
-    username: "@jack",
-    body: "I've never seen anything like this before. It's amazing. I love it.",
-    img: "https://avatar.vercel.sh/jack",
-  },
-  {
-    name: "Jill",
-    username: "@jill",
-    body: "I don't know what to say. I'm speechless. This is amazing.",
-    img: "https://avatar.vercel.sh/jill",
-  },
-  {
-    name: "John",
-    username: "@john",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/john",
-  },
+const imgs = [
+  "/landing/tech.jpg",
+  "/landing/marque/equp.jpg",
+  "/landing/marque/cr.jpg",
 ];
- 
- 
-const secondRow = reviews.slice(reviews.length / 2);
- 
-const ReviewCard = ({
-  img,
-  name,
-  username,
-  body,
-}: {
-  img: string;
-  name: string;
-  username: string;
-  body: string;
-}) => {
+
+const ImageCard = ({ img }: { img: string }) => {
   return (
     <figure
       className={cn(
         "relative h-full w-fit sm:w-36 cursor-pointer overflow-hidden rounded-xl border p-4",
         // light styles
-        "border-gray-950/[.1] bg-gray-600 hover:bg-gray-950/[.05]", 
+        "border-gray-950/[.1] bg-gray-600 hover:bg-gray-950/[.05]"
       )}
     >
-      <div className="flex flex-row items-center gap-2">
-        <img className="rounded-full" width="32" height="32" alt="" src={img} />
-        <div className="flex flex-col">
-          <figcaption className="text-sm font-medium dark:text-white">
-            {name}
-          </figcaption>
-          <p className="text-xs font-medium dark:text-white/40">{username}</p>
-        </div>
-      </div>
-      <blockquote className="mt-2 text-sm">{body}</blockquote>
+      <Image
+        src={img}
+        alt="img"
+        width={200}
+        height={200}
+        className="rounded-full mb-2"
+      />
     </figure>
   );
 };
- 
+
 const Solutions = () => {
   return (
     <div className="flex w-2/3 flex-1 flex-row bg-white gap-4 rounded-3xl p-4 relative  items-center justify-between overflow-hidden">
-        {/* text*/}
+      {/* text*/}
       <div className="flex flex-col justify-between h-full w-[50%]">
-        <ButtonArrow className="bg-gray-50 border-none" icon={<IconCloudNetwork className="text-white " />}>
+        <ButtonArrow
+          className="bg-gray-50 border-none"
+          icon={<IconCloudNetwork className="text-white " />}
+        >
           Solutions
         </ButtonArrow>
         <div className="flex flex-col gap-2 text-gray-600">
@@ -339,11 +314,10 @@ const Solutions = () => {
         </div>
       </div>
       <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
-        {secondRow.map((review) => (
-          <ReviewCard key={review.username} {...review} />
+        {imgs.map((img) => (
+          <ImageCard key={img} img={img} />
         ))}
       </Marquee>
-     
-      </div>
+    </div>
   );
-}
+};
