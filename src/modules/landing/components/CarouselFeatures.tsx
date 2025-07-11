@@ -143,7 +143,7 @@ export default function CarouselFeatures() {
 
 const Tech = () => {
   return (
-    <div className="flex w-1/3 flex-row gap-4 rounded-2xl bg-green-600 p-4">
+    <div className="flex w-1/3 flex-row gap-4 rounded-3xl bg-green-600 p-4">
       {/* text*/}
       <div className="flex flex-col justify-between w-[60%]">
         <ButtonArrow icon={<IconAccessPoint className="text-white" />}>
@@ -180,6 +180,6 @@ const Tech = () => {
 
 const Solutions = () => {
   return (
-    <div className="flex w-2/3 flex-row bg-white gap-4 rounded-2xl p-4"></div>
+    <div className="flex w-2/3 flex-row bg-white gap-4 rounded-3xl p-4"></div>
   );
 };
