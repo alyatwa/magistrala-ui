@@ -4,9 +4,9 @@ import React from "react";
 export const OilRig = () => {
   return (
     //bg-[#f6f6f6] 
-    <section className="py-16 w-full px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
+    <section className="py-16  bg-white w-screen -mx-[calc((100vw-100%)/2)]  ">
+     
+        <div className="lg:grid lg:grid-cols-2 px-8 lg:gap-12 lg:items-center">
           {/* Video Section */}
           <div className="mb-8 lg:mb-0">
             <div className="relative rounded-2xl overflow-hidden shadow-lg bg-white">
@@ -24,7 +24,7 @@ export const OilRig = () => {
           </div>
 
           {/* Content Section */}
-          <div className="lg:pl-8">
+          <div className="">
             <h2 className="text-4xl font-light text-gray-900 leading-tight mb-6">
               TRANSFORM YOUR INDUSTRY{" "}
               <span className="text-gray-900">— THE SMART WAY</span>
@@ -41,7 +41,7 @@ export const OilRig = () => {
             <ButtonArrow>Start Your IoT Journey</ButtonArrow>
           </div>
         </div>
-      </div>
+  
     </section>
   );
 };

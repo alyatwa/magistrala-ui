@@ -40,7 +40,7 @@ export const Contact = () => {
   };
 
   return (
-    <div className="relative w-full flex items-center justify-start px-32 py-8">
+    <div className="relative w-screen -mx-[calc((100vw-100%)/2)] px-10 flex items-center justify-start py-8">
       <div
         className="absolute inset-0 w-full h-full "
         style={{

@@ -84,7 +84,7 @@ export default function CarouselFeatures() {
       );
       const nextIndex = (currentIndex + 1) % features.length;
       setActiveTag(features[nextIndex].tagButton.label);
-    }, 4000); // Change every 1 second
+    }, 5000); // Change every 1 second
 
     return () => clearInterval(interval);
   }, [activeTag]);
@@ -126,13 +126,13 @@ export default function CarouselFeatures() {
   };
 
   const transition = {
-    duration: 1.5,
+    duration: 1.2,
     ease: "easeOut" as const,
   };
 
   return (
-    <section className="w-full py-16 bg-[#f6f6f6]">
-      <div className="px-4 flex gap-14 flex-col relative container mx-auto">
+    <section className="w-full py-16 ">
+      <div className=" flex gap-14 flex-col relative   ">
         <div className="">
           <AnimatePresence mode="wait">
             <motion.h2
@@ -279,7 +279,7 @@ const ImageCard = ({ img }: { img: string }) => {
         "relative h-full w-fit overflow-hidden rounded-2xl   bg-gray-100"
       )}
     >
-      <Image src={img} alt="img" width={220} height={200} className=" " />
+      <Image src={img} alt="img" width={210} height={220} className=" " />
     </figure>
   );
 };

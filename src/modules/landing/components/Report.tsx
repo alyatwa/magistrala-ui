@@ -1,6 +1,6 @@
 export const Report = () => {
   return (
-    <div className="relative w-full flex items-center justify-start px-32 py-8">
+    <div className="relative flex items-center justify-start w-screen -mx-[calc((100vw-100%)/2)] px-10 py-8">
       {/* Background layer with transform */}
       <div
         className="absolute inset-0 w-full h-full"
