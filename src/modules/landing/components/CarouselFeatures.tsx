@@ -276,17 +276,10 @@ const ImageCard = ({ img }: { img: string }) => {
   return (
     <figure
       className={cn(
-        "relative h-full w-fit overflow-hidden rounded-2xl   bg-gray-100",
-        
+        "relative h-full w-fit overflow-hidden rounded-2xl   bg-gray-100"
       )}
     >
-      <Image
-        src={img}
-        alt="img"
-        width={220}
-        height={200}
-        className=" "
-      />
+      <Image src={img} alt="img" width={220} height={200} className=" " />
     </figure>
   );
 };
@@ -304,12 +297,14 @@ const Solutions = () => {
         </ButtonArrow>
         <div className="flex flex-col gap-2 text-gray-600">
           <h3 className="capitalize text-2xl font-light">
-            FOLI'S GREEN ENERGY
+            Eco-Friendly IoT Solutions
           </h3>
           <p className="text-sm">
-            At Foli, we harness cutting-edge renewable energy technologies to
-            power a sustainable future.
+            Advanced IoT solutions for smart energy management and monitoring.
+            Our interconnected devices optimize performance across renewable
+            energy systems for maximum efficiency.
           </p>
+          <p className="text-sm"></p>
         </div>
       </div>
       <Marquee reverse pauseOnHover vertical className="[--duration:20s]">
