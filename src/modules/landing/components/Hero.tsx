@@ -25,15 +25,14 @@ export const Hero = () => {
     },
     {
       title: "Smart Finance Solutions",
-      description:
-        "Financial IoT infrastructure monitoring and predictive analytics for operational efficiency.",
+      description: "Financial predictive analytics for operational efficiency.",
       alt: "Smart financial systems",
       image: "/landing/hero/hero-finance.jpg",
     },
     {
       title: "Industrial Equipment",
       description:
-        "Heavy machinery monitoring, operational efficiency, and safety compliance with AI-powered insights.",
+        "Heavy machinery monitoring, operational efficiency with AI-powered insights.",
       alt: "Industrial factory automation",
       image: "/landing/hero/hero-factory-morning.jpg",
     },
