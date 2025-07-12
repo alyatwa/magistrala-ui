@@ -9,7 +9,7 @@ export const Footer = () => {
         <Logo className="flex md:hidden mb-4" />
         {/* Main Content */}
         <div className="grid md:grid-cols-2 gap-4 items-start mb-12">
-          <div className="flex flex-row gap-1 items-end">
+          <div className="flex md:flex-row flex-col gap-1 items-end">
             <h1 className="text-4xl md:text-5xl lg:text-5xl font-light">
               Let's <span className="font-normal">unite</span> to improve our{" "}
               <span className="font-normal">world</span>

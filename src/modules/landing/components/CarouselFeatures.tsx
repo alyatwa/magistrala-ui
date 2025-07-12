@@ -153,9 +153,9 @@ export default function CarouselFeatures() {
             </motion.h2>
           </AnimatePresence>
 
-          <div className="flex items-start flex-row justify-between gap-8">
+          <div className="flex items-start md:flex-row flex-col justify-between gap-8">
             {/* Vertical Navigation Buttons - Left Side */}
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-row flex-wrap gap-2 items-center md:items-start justify-center md:flex-col md:space-y-4">
               {features.map((feature) => (
                 <motion.button
                   key={feature.tagButton.id}
@@ -187,7 +187,7 @@ export default function CarouselFeatures() {
                     animate="center"
                     exit="exit"
                     transition={{ duration: 0.4, ease: "easeOut" as const }}
-                    className="absolute inset-0 w-full md:w-[200px]"
+                    className="absolute inset-0 w-full"
                   >
                     <Image
                       src={activeFeature.image}
@@ -201,7 +201,7 @@ export default function CarouselFeatures() {
               </div>
 
               {/* Content Side */}
-              <div className="flex flex-col justify-between gap-2 w-full md:max-w-2/3">
+              <div className="flex flex-col justify-between   gap-2 w-full md:max-w-2/3">
                 <AnimatePresence mode="wait">
                   <motion.p
                     key={activeFeature.id}
