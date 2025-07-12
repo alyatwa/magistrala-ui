@@ -7,12 +7,12 @@ import { Logo } from "@/components/shared/Logo";
 
 export const Hero = () => {
   const navLinks = [
-    { href: "#", label: "Home" },
-    { href: "#", label: "About us" },
-    { href: "#", label: "Solution" },
-    { href: "#", label: "Projects" },
-    { href: "#", label: "Achievements" },
-    { href: "#", label: "Contact" },
+    { href: "#home", label: "Home" },
+    // { href: "#", label: "About us" },
+    { href: "#solutions", label: "Solutions" },
+    { href: "#projects", label: "Projects" },
+    // { href: "#", label: "Achievements" },
+    { href: "#contact", label: "Contact" },
   ];
 
   const featureCards = [
@@ -47,7 +47,10 @@ export const Hero = () => {
   ];
 
   return (
-    <div className="min-h-screen w-screen -mx-[calc((100vw-100%)/2)]  relative overflow-hidden">
+    <div
+      id="home"
+      className="min-h-screen w-screen -mx-[calc((100vw-100%)/2)]  relative overflow-hidden"
+    >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image

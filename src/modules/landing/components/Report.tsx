@@ -1,6 +1,9 @@
 export const Report = () => {
   return (
-    <div className="relative flex items-center justify-center md:justify-start w-screen -mx-[calc((100vw-100%)/2)] px-10 py-8">
+    <section
+      id="projects"
+      className="relative flex items-center justify-center md:justify-start w-screen -mx-[calc((100vw-100%)/2)] px-10 py-8"
+    >
       {/* Background layer with transform */}
       <div
         className="absolute inset-0 w-full h-full"
@@ -49,6 +52,6 @@ export const Report = () => {
           <div className="h-1 w-8 bg-gray-300 rounded"></div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

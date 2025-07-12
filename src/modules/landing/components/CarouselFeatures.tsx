@@ -136,7 +136,10 @@ export default function CarouselFeatures() {
   };
 
   return (
-    <section className="w-screen -mx-[calc((100vw-100%)/2)] px-10 py-20 ">
+    <section
+      id="solutions"
+      className="w-screen -mx-[calc((100vw-100%)/2)] px-10 py-20 "
+    >
       <div className=" flex gap-14 flex-col relative ">
         <div className="">
           <AnimatePresence mode="wait">

@@ -40,7 +40,10 @@ export const Contact = () => {
   };
 
   return (
-    <div className="relative w-screen -mx-[calc((100vw-100%)/2)] px-10 flex items-center justify-center md:justify-start py-24">
+    <section
+      id="contact"
+      className="relative w-screen -mx-[calc((100vw-100%)/2)] px-10 flex items-center justify-center md:justify-start py-24"
+    >
       <div
         className="absolute inset-0 w-full h-full "
         style={{
@@ -127,6 +130,6 @@ export const Contact = () => {
           </form>
         </Form>
       </div>
-    </div>
+    </section>
   );
 };
