@@ -4,6 +4,9 @@ import React, { forwardRef, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 import { AnimatedBeam } from "@/components/magicui/animated-beam";
+import { ArrowRightIcon } from "lucide-react";
+import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text";
+import { IconTopologyStar2 } from "@tabler/icons-react";
 
 const Circle = forwardRef<
     HTMLDivElement,
@@ -35,11 +38,13 @@ export function Sources() {
     const div7Ref = useRef<HTMLDivElement>(null);
 
     return (
-        <div className="flex flex-row py-16 gap-6">
+        <div className="flex flex-row py-24 gap-6">
             <div className="flex flex-col justify-between gap-1">
+                <div className="grid gap-4">
+                <Chip/>
                 <h2 className="text-3xl text-start w-full font-light text-gray-800">
                     Stream your data from any source
-                </h2>
+                </h2></div>
                 <p className="text-base font-light text-gray-800">
                     Connect your device
                 </p>
@@ -505,3 +510,20 @@ const Icons = {
         </svg>
     ),
 };
+
+const Chip =()=>{
+    return (
+        <div
+            className={cn(
+              "group rounded-full border border-black/10 bg-white text-base w-fit text-black transition-all ease-in hover:cursor-pointer hover:bg-neutral-50 flex items-center py-1",
+            )}
+          >
+            <AnimatedShinyText className="inline-flex bg-white items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300  ">
+                <IconTopologyStar2 className="text-green-500 h-4 w-4 " />
+              <span className="text-black/95 leading-1 ml-1">Introducing Magic UI</span>
+              <ArrowRightIcon className="ml-1 size-3 text-black/95 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
+            </AnimatedShinyText>
+          </div>
+       
+      );
+    }
