@@ -153,7 +153,7 @@ export default function CarouselFeatures() {
             </motion.h2>
           </AnimatePresence>
 
-          <div className="flex items-start justify-between gap-8">
+          <div className="flex items-start flex-col md:flex-row justify-between gap-8">
             {/* Vertical Navigation Buttons - Left Side */}
             <div className="flex flex-col space-y-4">
               {features.map((feature) => (
@@ -176,9 +176,9 @@ export default function CarouselFeatures() {
             </div>
 
             {/* Main Content - Right Side */}
-            <div className="md:max-w-[50%] justify-end border-0 py-0 flex gap-6 ">
+            <div className="md:max-w-[50%] w-full flex-col md:flex-row justify-end border-0 py-0 flex gap-6 ">
               {/* Image Side */}
-              <div className="h-[200px] w-[350px] relative overflow-hidden rounded-2xl">
+              <div className="h-[200px] w-full md:w-[350px] relative overflow-hidden rounded-2xl">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeFeature.id}
@@ -187,11 +187,11 @@ export default function CarouselFeatures() {
                     animate="center"
                     exit="exit"
                     transition={{ duration: 0.4, ease: "easeOut" as const }}
-                    className="absolute inset-0"
+                    className="absolute inset-0 w-full md:w-[200px]"
                   >
                     <Image
                       src={activeFeature.image}
-                      alt={activeFeature.title}
+                      alt={activeFeature.title} 
                       fill
                       className="object-cover"
                     />
@@ -201,7 +201,7 @@ export default function CarouselFeatures() {
               </div>
 
               {/* Content Side */}
-              <div className="flex flex-col justify-between gap-2 max-w-2/3">
+              <div className="flex flex-col justify-between gap-2 w-full md:max-w-2/3">
                 <AnimatePresence mode="wait">
                   <motion.p
                     key={activeFeature.id}
@@ -210,7 +210,7 @@ export default function CarouselFeatures() {
                     animate="center"
                     exit="exit"
                     transition={transition}
-                    className="text-gray-600 w-full text-base leading-relaxed"
+                    className="text-gray-600 w-full text-sm md:text-base leading-relaxed"
                   >
                     {activeFeature.description}
                   </motion.p>
@@ -226,7 +226,7 @@ export default function CarouselFeatures() {
           </div>
         </div>
 
-        <div className="flex max-h-[340px] flex-row gap-4">
+        <div className="flex  max-h-[340px] flex-col md:flex-row gap-10 md:gap-4">
           <Solutions />
           <Tech />
         </div>
@@ -237,7 +237,7 @@ export default function CarouselFeatures() {
 
 const Tech = () => {
   return (
-    <div className="flex w-1/3 flex-row gap-4 rounded-3xl bg-[#539f58] p-4">
+    <div className="flex md:w-1/3 w-full flex-row gap-4 rounded-3xl bg-[#539f58] p-4">
       {/* text*/}
       <div className="flex flex-col justify-between w-[50%]">
         <ButtonArrow icon={<IconAccessPoint className="text-white" />}>
@@ -290,9 +290,9 @@ const ImageCard = ({ img }: { img: string }) => {
 
 const Solutions = () => {
   return (
-    <div className="flex w-2/3 flex-1 flex-row bg-white gap-4 rounded-3xl p-4 relative  items-center justify-between overflow-hidden">
+    <div className="flex md:w-2/3 w-full min-h-[340px] flex-1 flex-row bg-white gap-4 rounded-3xl p-4 relative  items-center justify-between overflow-hidden">
       {/* text*/}
-      <div className="flex flex-col justify-between h-full w-[50%]">
+      <div className="flex flex-col items-start md:justify-between h-full w-[50%]">
         <ButtonArrow
           className="bg-gray-50 border-none"
           icon={<IconCloudNetwork className="text-white " />}
@@ -300,10 +300,10 @@ const Solutions = () => {
           Solutions
         </ButtonArrow>
         <div className="flex flex-col gap-2 text-gray-600">
-          <h3 className="capitalize text-2xl font-light">
+          <h3 className="capitalize text-lg md:text-2xl font-light">
             Eco-Friendly IoT Solutions
           </h3>
-          <p className="text-sm">
+          <p className="text-xs md:text-sm">
             Advanced IoT solutions for smart energy management and monitoring.
             Our interconnected devices optimize performance across renewable
             energy systems for maximum efficiency.
