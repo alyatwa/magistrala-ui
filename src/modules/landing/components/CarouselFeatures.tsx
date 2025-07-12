@@ -137,7 +137,7 @@ export default function CarouselFeatures() {
 
   return (
     <section className="w-screen -mx-[calc((100vw-100%)/2)] px-10 py-20 ">
-      <div className=" flex gap-14 flex-col relative   ">
+      <div className=" flex gap-14 flex-col relative ">
         <div className="">
           <AnimatePresence mode="wait">
             <motion.h2
@@ -153,7 +153,7 @@ export default function CarouselFeatures() {
             </motion.h2>
           </AnimatePresence>
 
-          <div className="flex items-start flex-col md:flex-row justify-between gap-8">
+          <div className="flex items-start flex-row justify-between gap-8">
             {/* Vertical Navigation Buttons - Left Side */}
             <div className="flex flex-col space-y-4">
               {features.map((feature) => (
@@ -191,7 +191,7 @@ export default function CarouselFeatures() {
                   >
                     <Image
                       src={activeFeature.image}
-                      alt={activeFeature.title} 
+                      alt={activeFeature.title}
                       fill
                       className="object-cover"
                     />
@@ -226,7 +226,7 @@ export default function CarouselFeatures() {
           </div>
         </div>
 
-        <div className="flex  max-h-[340px] flex-col md:flex-row gap-10 md:gap-4">
+        <div className="flex  md:max-h-[340px] flex-col md:flex-row gap-10 md:gap-4">
           <Solutions />
           <Tech />
         </div>
@@ -239,7 +239,7 @@ const Tech = () => {
   return (
     <div className="flex md:w-1/3 w-full flex-row gap-4 rounded-3xl bg-[#539f58] p-4">
       {/* text*/}
-      <div className="flex flex-col justify-between w-[50%]">
+      <div className="flex flex-col justify-between w-[75%] md:w-[50%]">
         <ButtonArrow icon={<IconAccessPoint className="text-white" />}>
           Technology
         </ButtonArrow>
@@ -253,7 +253,7 @@ const Tech = () => {
       </div>
 
       {/* image */}
-      <div className=" h-[310px] w-[212px] relative overflow-hidden rounded-2xl">
+      <div className=" h-[310px] w-[50%] relative overflow-hidden rounded-2xl">
         <div className="flex z-[2] absolute top-2 right-2 aspect-square h-7 w-7 items-center justify-center rounded-full bg-[#539f58]">
           <IconArrowUpRight className="text-white" />
         </div>
@@ -290,9 +290,9 @@ const ImageCard = ({ img }: { img: string }) => {
 
 const Solutions = () => {
   return (
-    <div className="flex md:w-2/3 w-full min-h-[340px] flex-1 flex-row bg-white gap-4 rounded-3xl p-4 relative  items-center justify-between overflow-hidden">
+    <div className="flex md:w-2/3 h-[340px] max-h-[340px] w-full flex-row bg-white gap-4 rounded-3xl p-4 relative      overflow-hidden">
       {/* text*/}
-      <div className="flex flex-col items-start md:justify-between h-full w-[50%]">
+      <div className="flex flex-col h-full justify-between flex-1  w-[50%] ">
         <ButtonArrow
           className="bg-gray-50 border-none"
           icon={<IconCloudNetwork className="text-white " />}

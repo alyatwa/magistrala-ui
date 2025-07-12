@@ -46,9 +46,9 @@ export function Sources() {
   const div7Ref = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="flex flex-row py-24 gap-6">
-      <div className="flex flex-col justify-between gap-1">
-        <div className="grid gap-4">
+    <div className="flex flex-col justify-center md:flex-row py-24 gap-6">
+      <div className="flex flex-col  justify-between gap-1">
+        <div className="grid md:text-start gap-4">
           <Chip />
           <h2 className="text-3xl text-start w-full font-light text-gray-800">
             Connect from Any Protocol & Channel
@@ -60,7 +60,7 @@ export function Sources() {
         </p>
       </div>
       <div
-        className="relative flex   min-h-[300px] w-full items-center justify-end overflow-hidden  "
+        className="relative flex   min-h-[300px] w-full items-center justify-center md:justify-end overflow-hidden  "
         ref={containerRef}
       >
         <div className="flex size-full max-h-[200px] max-w-lg flex-col items-stretch justify-between gap-10">
