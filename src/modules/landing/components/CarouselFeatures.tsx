@@ -36,7 +36,7 @@ const features: FeatureItem[] = [
     tags: ["Device Management", "Provisioning", "IoT Platform", "Automation"],
     image: "/landing/slider/cargo.jpg",
     readMoreLink: "#",
-    tagButton: { id: "01", label: "technology" },
+    tagButton: { id: "01", label: "device management" },
   },
   {
     id: 2,
@@ -47,7 +47,7 @@ const features: FeatureItem[] = [
     tags: ["AI/ML", "Automation", "Real-time Analytics", "Smart Insights"],
     image: "/landing/slider/electricity.jpg",
     readMoreLink: "#",
-    tagButton: { id: "02", label: "innovation" },
+    tagButton: { id: "02", label: "ai/ml analytics" },
   },
   {
     id: 3,
@@ -58,7 +58,7 @@ const features: FeatureItem[] = [
     tags: ["Security", "Scalability", "Enterprise", "Compliance"],
     image: "/landing/slider/factory.jpg",
     readMoreLink: "#",
-    tagButton: { id: "03", label: "solar panels" },
+    tagButton: { id: "03", label: "security & scale" },
   },
   {
     id: 4,
@@ -74,7 +74,7 @@ const features: FeatureItem[] = [
     ],
     image: "/landing/slider/wind-farm.jpg",
     readMoreLink: "#",
-    tagButton: { id: "04", label: "windmills" },
+    tagButton: { id: "04", label: "renewable energy" },
   },
 ];
 
