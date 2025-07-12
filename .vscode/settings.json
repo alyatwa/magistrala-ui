@@ -4,5 +4,6 @@
   },
   "tailwindCSS.experimental.configFile": "src/app/globals.css",
   "IDX.aI.enableInlineCompletion": true,
-  "IDX.aI.enableCodebaseIndexing": true
+  "IDX.aI.enableCodebaseIndexing": true,
+  "cSpell.words": ["Magistrala"]
 }

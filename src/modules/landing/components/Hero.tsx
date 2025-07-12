@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Zap } from "lucide-react";
 import Image from "next/image";
 import { IconArrowUpRight } from "@tabler/icons-react";
 import ButtonArrow from "@/components/button-arrow";
@@ -18,34 +17,34 @@ export const Hero = () => {
 
   const featureCards = [
     {
-      title: "HydroAtom",
+      title: "Oil & Gas Monitoring",
       description:
-        "HydroAtom harnesses water and atomization for sustainable energy.",
-      alt: "Waterfall representing hydropower",
+        "Offshore rig monitoring, pipeline integrity, and equipment health tracking with real-time insights.",
+      alt: "Oil and gas industrial monitoring",
       image: "/landing/hero/hero-oil.jpg",
     },
     {
-      title: "Sunlight Energy",
+      title: "Smart Finance Solutions",
       description:
-        "Sunlight Energy captures solar power for clean sustainable energy.",
-      alt: "Solar panels in landscape",
+        "Financial IoT infrastructure monitoring and predictive analytics for operational efficiency.",
+      alt: "Smart financial systems",
       image: "/landing/hero/hero-finance.jpg",
     },
     {
-      title: "Wind Harvesting",
+      title: "Industrial Equipment",
       description:
-        "Wind Energy captures the wind's power to generate clean renewable energy.",
-      alt: "Wind turbines in green landscape",
+        "Heavy machinery monitoring, operational efficiency, and safety compliance with AI-powered insights.",
+      alt: "Industrial factory automation",
       image: "/landing/hero/hero-factory-morning.jpg",
     },
   ];
 
   const heroButtons = [
-    "Hydropower",
-    "Solar Energy",
-    "Wind Power",
-    "Geothermal Energy",
-    "Biomass Energy",
+    "Smart Manufacturing",
+    "Asset Tracking",
+    "Predictive Analytics",
+    "Industrial IoT",
+    "AI Automation",
   ];
 
   return (
@@ -66,7 +65,7 @@ export const Hero = () => {
       <nav className="relative z-50 p-6">
         <div className="max-w-7xl mx-auto">
           <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-full px-6 py-3 flex items-center justify-between">
-         <Logo />
+            <Logo />
 
             <div className="hidden md:flex items-center space-x-8">
               {navLinks.map((link, index) => (
@@ -96,8 +95,8 @@ export const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-5xl lg:text-6xl font-light text-white leading-tight mb-8">
-              Powering the Future with Sustainable{" "}
-              <span className=" font-medium">Hydropower</span>
+              Powering the Future of IoT with{" "}
+              <span className=" font-medium">Intelligent Insights</span>
             </h1>
           </div>
           {/* hero btns */}

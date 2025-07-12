@@ -29,44 +29,49 @@ interface FeatureItem {
 const features: FeatureItem[] = [
   {
     id: 1,
-    title: "FOLI'S GREEN ENERGY INNOVATIONS UNLEASHED WORLDWIDE",
+    title: "SEAMLESS DEVICE MANAGEMENT & ZERO-TOUCH PROVISIONING",
     description:
-      "At Foli, we harness cutting-edge renewable energy technologies to power a sustainable future. Our innovative solutions, from solar farms to wind turbines, lead the way in eco-friendly power generation.",
-    category: "SUSTAINABILITY",
-    tags: ["Technology", "Innovation", "Solar panels", "Windmills"],
+      "Transform your IoT ecosystem with comprehensive lifecycle management that streamlines device onboarding and control. Focus on innovation, not infrastructure setup with our advanced provisioning capabilities.",
+    category: "DEVICE MANAGEMENT",
+    tags: ["Device Management", "Provisioning", "IoT Platform", "Automation"],
     image: "/landing/slider/cargo.jpg",
     readMoreLink: "#",
     tagButton: { id: "01", label: "technology" },
   },
   {
     id: 2,
-    title: "SMART GRID TECHNOLOGY FOR EFFICIENT ENERGY DISTRIBUTION",
+    title: "INTELLIGENT AUTOMATION WITH AI/ML POWERED INSIGHTS",
     description:
-      "Revolutionary smart grid solutions that optimize energy distribution and reduce waste. Our advanced monitoring systems ensure maximum efficiency across all energy networks.",
-    category: "TECHNOLOGY",
-    tags: ["Smart Grid", "Efficiency", "Monitoring", "Distribution"],
+      "Advanced AI/ML engine analyzes IoT data in real-time, uncovering patterns, predicting issues, and enabling smart automated actions. Configure powerful Rules Engine triggers for optimal performance.",
+    category: "AI/ML ANALYTICS",
+    tags: ["AI/ML", "Automation", "Real-time Analytics", "Smart Insights"],
     image: "/landing/slider/electricity.jpg",
     readMoreLink: "#",
     tagButton: { id: "02", label: "innovation" },
   },
   {
     id: 3,
-    title: "CARBON NEUTRAL OPERATIONS BY 2030",
+    title: "ENTERPRISE-GRADE SECURITY & SCALABLE ARCHITECTURE",
     description:
-      "Our commitment to achieving carbon neutrality through innovative processes and sustainable practices. Leading the industry transformation towards a greener future.",
-    category: "ENVIRONMENT",
-    tags: ["Carbon Neutral", "Sustainability", "Green Future", "Innovation"],
+      "End-to-end encryption, role-based access controls, and compliance-ready audit trails protect your IoT data. Cloud-native platform scales seamlessly from hundreds to millions of devices.",
+    category: "SECURITY & SCALE",
+    tags: ["Security", "Scalability", "Enterprise", "Compliance"],
     image: "/landing/slider/factory.jpg",
     readMoreLink: "#",
     tagButton: { id: "03", label: "solar panels" },
   },
   {
     id: 4,
-    title: "WINDMILL POWER GENERATION EXCELLENCE",
+    title: "WIND ENERGY MONITORING & PREDICTIVE MAINTENANCE",
     description:
-      "Advanced windmill technology that maximizes energy capture and efficiency. Our state-of-the-art wind farms provide clean, renewable energy solutions for communities worldwide.",
-    category: "RENEWABLE",
-    tags: ["Windmills", "Clean Energy", "Efficiency", "Power Generation"],
+      "Advanced wind energy solutions with turbine performance monitoring, predictive maintenance capabilities, and wind pattern analysis. Maximize energy efficiency with intelligent IoT insights.",
+    category: "RENEWABLE ENERGY",
+    tags: [
+      "Wind Energy",
+      "Predictive Maintenance",
+      "IoT Monitoring",
+      "Energy Efficiency",
+    ],
     image: "/landing/slider/wind-farm.jpg",
     readMoreLink: "#",
     tagButton: { id: "04", label: "windmills" },
@@ -239,12 +244,10 @@ const Tech = () => {
           Technology
         </ButtonArrow>
         <div className="flex flex-col gap-2">
-          <h3 className="capitalize text-2xl font-light">
-            FOLI'S GREEN ENERGY
-          </h3>
+          <h3 className="capitalize text-2xl font-light">AI/ML IoT Platform</h3>
           <p className="text-sm">
-            At Foli, we harness cutting-edge renewable energy technologies to
-            power a sustainable future.
+            Transform your IoT ecosystem with cutting-edge AI/ML technology that
+            converts raw device data into actionable intelligence.
           </p>
         </div>
       </div>
