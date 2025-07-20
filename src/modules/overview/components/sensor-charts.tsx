@@ -38,18 +38,18 @@ export function SensorCharts() {
       const timeString = now.toLocaleTimeString();
 
       // Temperature data (20-30°C range)
-      setTemperatureData((prev) => {
-        const newData = [
-          ...prev.slice(-19),
-          {
-            time: timeString,
-            sensor1: generateDataPoint(25, 4),
-            sensor2: generateDataPoint(23, 3),
-            sensor3: generateDataPoint(27, 5),
-          },
-        ];
-        return newData;
-      });
+      // setTemperatureData((prev) => {
+      //   const newData = [
+      //     ...prev.slice(-19),
+      //     {
+      //       time: timeString,
+      //       sensor1: generateDataPoint(25, 4),
+      //       sensor2: generateDataPoint(23, 3),
+      //       sensor3: generateDataPoint(27, 5),
+      //     },
+      //   ];
+      //   return newData;
+      // });
 
       // Pressure data (1000-1200 hPa range)
       setPressureData((prev) => {

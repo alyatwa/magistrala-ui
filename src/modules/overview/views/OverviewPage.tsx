@@ -1,4 +1,4 @@
-import { ChartAreaInteractive } from "@/components/chart-area-interactive";
+import { ChartAreaInteractive } from "@/modules/overview/components/chart-area-interactive";
 
 import { SectionCards } from "@/modules/overview/components/section-cards";
 import { OverviewTable } from "@/modules/overview/components/overview-table";

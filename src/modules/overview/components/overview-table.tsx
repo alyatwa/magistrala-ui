@@ -64,22 +64,30 @@ const schema = z.object({
 });
 
 const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
+  { month: "January", temperature: 5, humidity: 2, motion: 8, smoke: 1 },
+  { month: "February", temperature: 7, humidity: 1, motion: 6, smoke: 0 },
+  { month: "March", temperature: 4, humidity: 3, motion: 7, smoke: 2 },
+  { month: "April", temperature: 6, humidity: 2, motion: 5, smoke: 1 },
+  { month: "May", temperature: 8, humidity: 1, motion: 9, smoke: 0 },
+  { month: "June", temperature: 3, humidity: 2, motion: 4, smoke: 1 },
 ];
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
+  temperature: {
+    label: "Temperature",
     color: "var(--primary)",
   },
-  mobile: {
-    label: "Mobile",
-    color: "var(--primary)",
+  humidity: {
+    label: "Humidity",
+    color: "var(--secondary)",
+  },
+  motion: {
+    label: "Motion",
+    color: "var(--accent)",
+  },
+  smoke: {
+    label: "Smoke",
+    color: "var(--destructive)",
   },
 } satisfies ChartConfig;
 
