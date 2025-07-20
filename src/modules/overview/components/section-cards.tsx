@@ -88,7 +88,7 @@ export function SectionCards() {
       <Card className="@container/card">
         <CardHeader>
           <CardDescription>System Health</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
+          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl text-green-500">
             Good
           </CardTitle>
           <CardAction>

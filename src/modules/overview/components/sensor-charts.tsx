@@ -33,50 +33,50 @@ export function SensorCharts() {
   const [vibrationData, setVibrationData] = useState<any[]>([]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const now = new Date();
-      const timeString = now.toLocaleTimeString();
+    // const interval = setInterval(() => {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString();
 
-      // Temperature data (20-30°C range)
-      // setTemperatureData((prev) => {
-      //   const newData = [
-      //     ...prev.slice(-19),
-      //     {
-      //       time: timeString,
-      //       sensor1: generateDataPoint(25, 4),
-      //       sensor2: generateDataPoint(23, 3),
-      //       sensor3: generateDataPoint(27, 5),
-      //     },
-      //   ];
-      //   return newData;
-      // });
+    // Temperature data (20-30°C range)
+    setTemperatureData((prev) => {
+      const newData = [
+        ...prev.slice(-19),
+        {
+          time: timeString,
+          sensor1: generateDataPoint(25, 4),
+          sensor2: generateDataPoint(23, 3),
+          sensor3: generateDataPoint(27, 5),
+        },
+      ];
+      return newData;
+    });
 
-      // Pressure data (1000-1200 hPa range)
-      setPressureData((prev) => {
-        const newData = [
-          ...prev.slice(-19),
-          {
-            time: timeString,
-            pressure: generateDataPoint(1100, 100),
-          },
-        ];
-        return newData;
-      });
+    // Pressure data (1000-1200 hPa range)
+    setPressureData((prev) => {
+      const newData = [
+        ...prev.slice(-19),
+        {
+          time: timeString,
+          pressure: generateDataPoint(1100, 100),
+        },
+      ];
+      return newData;
+    });
 
-      // Vibration data (0-10 range)
-      setVibrationData((prev) => {
-        const newData = [
-          ...prev.slice(-19),
-          {
-            time: timeString,
-            vibration: Math.abs(generateDataPoint(2, 6)),
-          },
-        ];
-        return newData;
-      });
-    }, 1000);
+    // Vibration data (0-10 range)
+    setVibrationData((prev) => {
+      const newData = [
+        ...prev.slice(-19),
+        {
+          time: timeString,
+          vibration: Math.abs(generateDataPoint(2, 6)),
+        },
+      ];
+      return newData;
+    });
+    // }, 1000);
 
-    return () => clearInterval(interval);
+    // return () => clearInterval(interval);
   }, []);
 
   const chartConfig = {
