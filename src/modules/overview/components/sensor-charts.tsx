@@ -74,7 +74,7 @@ export function SensorCharts() {
         ];
         return newData;
       });
-    }, 1000);
+    }, 500);
 
     return () => clearInterval(interval);
   }, []);
