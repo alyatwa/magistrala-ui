@@ -21,8 +21,8 @@ export const Footer = () => {
           </div>
 
           <div className="text-left md:text-right space-y-2 text-sm ">
-            <p>Email: contact@greenfuture.com</p>
-            <p>Phone: +1 (555) 123-4567</p>
+            <p>Email: ali.atwa2040@gmail.com</p>
+            <p>Phone: +201099388351</p>
             <p>Address: 123 Greenway Avenue, New</p>
             <p>York, NY 10001, USA</p>
           </div>

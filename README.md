@@ -3,7 +3,7 @@
 ![Preview](https://i.postimg.cc/rmbVcZPZ/image.png)
 ![Additional Preview](https://i.postimg.cc/VzjqDPM0/image.png)
 
-An open-source user interface for the Magistrala IoT platform, built with Next.js. This project provides a modular, accessible, and scalable web application for managing IoT devices, data, and integrations.
+An open-source modern user interface for the Magistrala IoT platform, built with Next.js. This project provides a modular, accessible, and scalable web application for managing IoT devices, data, and integrations.
 
 ## Features
 
